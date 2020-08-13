@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9068D2024E5791900FB3DC8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D1F24E5791900FB3DC8 /* Router.swift */; };
+		E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */; };
+		E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2324E57A4900FB3DC8 /* HTTP.swift */; };
+		E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2524E57C8E00FB3DC8 /* Course.swift */; };
+		E9068D2824E57D2400FB3DC8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2724E57D2400FB3DC8 /* User.swift */; };
+		E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */; };
 		E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F424E2C27000FCA85E /* AppDelegate.swift */; };
 		E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */; };
 		E99BA3F924E2C27000FCA85E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F824E2C27000FCA85E /* ViewController.swift */; };
@@ -35,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9068D1F24E5791900FB3DC8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaAPI.swift; sourceTree = "<group>"; };
+		E9068D2324E57A4900FB3DC8 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		E9068D2524E57C8E00FB3DC8 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		E9068D2724E57D2400FB3DC8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaRepository.swift; sourceTree = "<group>"; };
 		E99BA3F124E2C27000FCA85E /* SIGAA-UFC-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIGAA-UFC-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA3F424E2C27000FCA85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +88,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9068D1A24E575E200FB3DC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E99BA3FA24E2C27000FCA85E /* Main.storyboard */,
+				E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */,
+				E99BA3FD24E2C27100FCA85E /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9068D1B24E575E700FB3DC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
+				E9068D2724E57D2400FB3DC8 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9068D1C24E575EB00FB3DC8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E99BA3F824E2C27000FCA85E /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9068D1D24E5767F00FB3DC8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E9068D1F24E5791900FB3DC8 /* Router.swift */,
+				E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */,
+				E9068D2324E57A4900FB3DC8 /* HTTP.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E9068D1E24E5769600FB3DC8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		E99BA3E824E2C27000FCA85E = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +156,13 @@
 		E99BA3F324E2C27000FCA85E /* SIGAA-UFC-Mobile */ = {
 			isa = PBXGroup;
 			children = (
-				E99BA3F424E2C27000FCA85E /* AppDelegate.swift */,
 				E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */,
-				E99BA3F824E2C27000FCA85E /* ViewController.swift */,
-				E99BA3FA24E2C27000FCA85E /* Main.storyboard */,
-				E99BA3FD24E2C27100FCA85E /* Assets.xcassets */,
-				E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */,
+				E99BA3F424E2C27000FCA85E /* AppDelegate.swift */,
+				E9068D1A24E575E200FB3DC8 /* View */,
+				E9068D1C24E575EB00FB3DC8 /* Controller */,
+				E9068D1B24E575E700FB3DC8 /* Model */,
+				E9068D1E24E5769600FB3DC8 /* Repositories */,
+				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E99BA40224E2C27100FCA85E /* Info.plist */,
 			);
 			path = "SIGAA-UFC-Mobile";
@@ -280,7 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9068D2024E5791900FB3DC8 /* Router.swift in Sources */,
+				E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */,
+				E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */,
 				E99BA3F924E2C27000FCA85E /* ViewController.swift in Sources */,
+				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
+				E9068D2824E57D2400FB3DC8 /* User.swift in Sources */,
+				E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */,
 				E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 			);
