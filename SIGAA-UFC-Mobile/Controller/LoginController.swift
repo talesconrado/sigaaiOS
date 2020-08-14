@@ -24,12 +24,29 @@ class LoginController: UIViewController {
         return title
     }()
     
+    let backgroundIllustration: UIImageView = {
+        let background = UIImageView()
+        background.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "menina")
+        background.image = image
+    
+        return background
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundBlue
+        setupViews()
+        setupConstraints()
+    }
+    
+    func setupViews() {
         view.addSubview(loginCard)
         view.addSubview(loginTitle)
-        
+        view.insertSubview(backgroundIllustration, belowSubview: loginCard)
+    }
+    
+    func setupConstraints() {
         NSLayoutConstraint.activate([
         
             loginCard.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
@@ -37,10 +54,12 @@ class LoginController: UIViewController {
             loginCard.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
             loginCard.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60),
             
-            loginTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            loginTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60)
+            loginTitle.bottomAnchor.constraint(equalTo: loginCard.topAnchor, constant: -30),
+            loginTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 65),
+            
+            backgroundIllustration.rightAnchor.constraint(equalTo: view.rightAnchor),
+            backgroundIllustration.topAnchor.constraint(equalTo: loginCard.bottomAnchor, constant: -50)
         
         ])
     }
-    
 }

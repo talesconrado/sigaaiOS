@@ -81,8 +81,8 @@ class LoginCardView: UIView {
         layer.cornerRadius = 15
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowRadius = 4
-        layer.shadowOpacity = 0.8
-        layer.shadowOffset = CGSize(width: 0.0, height: 5)
+        layer.shadowOpacity = 0.9
+        layer.shadowOffset = CGSize(width: 0.0, height: 8)
     }
     
     func setupViews() {
