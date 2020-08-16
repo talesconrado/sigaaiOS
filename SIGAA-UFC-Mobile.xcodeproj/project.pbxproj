@@ -22,6 +22,7 @@
 		E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87B24E6DCBB000E0697 /* Fonts.swift */; };
 		E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA5E24E9AD9800B74726 /* CourseCard.swift */; };
 		E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA6024E9ADCB00B74726 /* UserCard.swift */; };
+		E982AA6424E9BC7F00B74726 /* CoursesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA6324E9BC7F00B74726 /* CoursesController+UITableView.swift */; };
 		E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995EEA224E6C8D800CDEE2C /* LoginTextFields.swift */; };
 		E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F424E2C27000FCA85E /* AppDelegate.swift */; };
 		E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */; };
@@ -65,6 +66,7 @@
 		E95BE87B24E6DCBB000E0697 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E982AA5E24E9AD9800B74726 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
 		E982AA6024E9ADCB00B74726 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
+		E982AA6324E9BC7F00B74726 /* CoursesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoursesController+UITableView.swift"; sourceTree = "<group>"; };
 		E995EEA224E6C8D800CDEE2C /* LoginTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFields.swift; sourceTree = "<group>"; };
 		E99BA3F124E2C27000FCA85E /* SIGAA-UFC-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIGAA-UFC-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA3F424E2C27000FCA85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,8 +134,8 @@
 		E9068D1C24E575EB00FB3DC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E982AA6224E9BC6200B74726 /* Courses */,
 				E9E019DD24E8E8C800CAE203 /* Login */,
-				E94F4B0024E8F19000B408EF /* CoursesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +174,15 @@
 			children = (
 				E982AA5E24E9AD9800B74726 /* CourseCard.swift */,
 				E982AA6024E9ADCB00B74726 /* UserCard.swift */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		E982AA6224E9BC6200B74726 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				E94F4B0024E8F19000B408EF /* CoursesController.swift */,
+				E982AA6324E9BC7F00B74726 /* CoursesController+UITableView.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 				E94F4B0124E8F19000B408EF /* CoursesController.swift in Sources */,
 				E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */,
 				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
+				E982AA6424E9BC7F00B74726 /* CoursesController+UITableView.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
