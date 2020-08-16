@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if isUserLoggedIn {
             print("Usuário logado.")
         } else {
-            let mainViewController = LoginController()
+            let mainViewController = UINavigationController(rootViewController: LoginController())
             window?.rootViewController = mainViewController
         }
         

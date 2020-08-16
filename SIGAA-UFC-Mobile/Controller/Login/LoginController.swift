@@ -10,6 +10,8 @@ import UIKit
 
 class LoginController: UIViewController {
     
+    let coursesController = CoursesController()
+    
     lazy var loginCard: LoginCardView = {
         let lcv = LoginCardView()
         lcv.translatesAutoresizingMaskIntoConstraints = false
@@ -36,23 +38,51 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundBlue
+        navigationController?.isNavigationBarHidden = true
         
         setupDelegates()
+        setupButton()
         setupKeyboardDismiss()
         setupViews()
         setupConstraints()
     }
     
-    func loginUser() {
-        SigaaRepository().loginUser(login: "user", senha: "senha") { user  in
+    // MARK: DO NOT FORGET
+    //FIX THIS MESSSS
+    @objc func loginUser() {
+        loginCard.loginButton.showLoading()
+        SigaaRepository().loginUser(login: loginCard.userTextField.text!, senha: loginCard.passwordTextField.text!) { user  in
             DispatchQueue.main.async {
-                print(user!.curso)
+                //sleep(1)
+                if let user = user {
+                    self.showCoursesScreen(from: user)
+                } else {
+                    self.alertError()
+                    self.coursesController.user = user
+                    let navigationCourses = UINavigationController(rootViewController: self.coursesController)
+                    navigationCourses.modalPresentationStyle = .fullScreen
+                    navigationCourses.modalTransitionStyle = .crossDissolve
+                    self.navigationController?.pushViewController(self.coursesController, animated: true)
+                }
             }
         }
     }
     
-    func loginButtonPressed() {
-        
+    func showCoursesScreen(from user: User) {
+        loginCard.loginButton.loginSuccesful()
+        //sleep(1)
+        coursesController.user = user
+        let navigationCourses = UINavigationController(rootViewController: coursesController)
+        present(navigationCourses, animated: true, completion: nil)
+    }
+    
+    func alertError() {
+        loginCard.loginButton.hideLoading()
+        print("Error.")
+    }
+    
+    func setupButton() {
+        loginCard.loginButton.addTarget(self, action: #selector(self.loginUser), for: .touchUpInside)
     }
 
     func setupDelegates() {

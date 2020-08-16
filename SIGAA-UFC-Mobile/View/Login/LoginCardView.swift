@@ -59,8 +59,8 @@ class LoginCardView: UIView {
         return pwd
     }()
     
-    let loginButton: UIButton = {
-        let btn = UIButton()
+    let loginButton: LoginButton = {
+        let btn = LoginButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .primaryBlue
         btn.setTitle("Entrar", for: .normal)
