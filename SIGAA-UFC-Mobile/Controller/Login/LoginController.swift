@@ -51,26 +51,28 @@ class LoginController: UIViewController {
     //FIX THIS MESSSS
     @objc func loginUser() {
         loginCard.loginButton.showLoading()
-        SigaaRepository().loginUser(login: loginCard.userTextField.text!, senha: loginCard.passwordTextField.text!) { user  in
+        guard let login = loginCard.userTextField.text, let password = loginCard.passwordTextField.text else {
+            print("Error: nil text fields.")
+            return
+        }
+        
+        SigaaRepository().loginUser(login: login, password: password) { user  in
             DispatchQueue.main.async {
-                //sleep(1)
+                sleep(1)
                 if let user = user {
                     self.showCoursesScreen(from: user)
                 } else {
+                    sleep(1)
                     self.alertError()
-                    self.coursesController.user = user
-                    let navigationCourses = UINavigationController(rootViewController: self.coursesController)
-                    navigationCourses.modalPresentationStyle = .fullScreen
-                    navigationCourses.modalTransitionStyle = .crossDissolve
-                    self.navigationController?.pushViewController(self.coursesController, animated: true)
                 }
             }
         }
     }
     
+    // MARK: Fix dis pls
     func showCoursesScreen(from user: User) {
         loginCard.loginButton.loginSuccesful()
-        //sleep(1)
+        sleep(1)
         coursesController.user = user
         let navigationCourses = UINavigationController(rootViewController: coursesController)
         present(navigationCourses, animated: true, completion: nil)

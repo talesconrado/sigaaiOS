@@ -20,6 +20,8 @@
 		E94F4B0124E8F19000B408EF /* CoursesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F4B0024E8F19000B408EF /* CoursesController.swift */; };
 		E95BE87824E6D10E000E0697 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87724E6D10E000E0697 /* Colors.swift */; };
 		E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87B24E6DCBB000E0697 /* Fonts.swift */; };
+		E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA5E24E9AD9800B74726 /* CourseCard.swift */; };
+		E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA6024E9ADCB00B74726 /* UserCard.swift */; };
 		E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995EEA224E6C8D800CDEE2C /* LoginTextFields.swift */; };
 		E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F424E2C27000FCA85E /* AppDelegate.swift */; };
 		E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */; };
@@ -61,6 +63,8 @@
 		E94F4B0024E8F19000B408EF /* CoursesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesController.swift; sourceTree = "<group>"; };
 		E95BE87724E6D10E000E0697 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E95BE87B24E6DCBB000E0697 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		E982AA5E24E9AD9800B74726 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
+		E982AA6024E9ADCB00B74726 /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		E995EEA224E6C8D800CDEE2C /* LoginTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFields.swift; sourceTree = "<group>"; };
 		E99BA3F124E2C27000FCA85E /* SIGAA-UFC-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIGAA-UFC-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA3F424E2C27000FCA85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E995EEA124E6BF2900CDEE2C /* Extensions */,
+				E982AA5D24E9ABF500B74726 /* Courses */,
 				E924FD0324E6250200127A3B /* Login */,
 				E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */,
 				E99BA3FD24E2C27100FCA85E /* Assets.xcassets */,
@@ -160,6 +165,15 @@
 				E94F4AFE24E8ED7400B408EF /* LoginButton.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		E982AA5D24E9ABF500B74726 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				E982AA5E24E9AD9800B74726 /* CourseCard.swift */,
+				E982AA6024E9ADCB00B74726 /* UserCard.swift */,
+			);
+			path = Courses;
 			sourceTree = "<group>";
 		};
 		E995EEA124E6BF2900CDEE2C /* Extensions */ = {
@@ -386,6 +400,7 @@
 				E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */,
 				E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */,
 				E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */,
+				E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */,
 				E95BE87824E6D10E000E0697 /* Colors.swift in Sources */,
 				E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */,
 				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
@@ -397,6 +412,7 @@
 				E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */,
 				E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */,
 				E94F4B0124E8F19000B408EF /* CoursesController.swift in Sources */,
+				E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */,
 				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 			);

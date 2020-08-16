@@ -10,9 +10,9 @@ import Foundation
 
 class SigaaRepository {
     
-    func loginUser(login: String, senha: String, completion: @escaping (User?) -> Void = { user in }) {
+    func loginUser(login: String, password: String, completion: @escaping (User?) -> Void = { user in }) {
         
-        HTTP.post.request(url: SigaaAPI.login.url, body: ["login":login, "senha": senha]) { data, response, errorMessage in
+        HTTP.post.request(url: SigaaAPI.login.url, body: ["login":login, "senha": password]) { data, response, errorMessage in
 
             if let errorMessage = errorMessage {
                 print(errorMessage)
