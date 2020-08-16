@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginCardView: UIView {
-    
+            
     lazy var iconConfig: UIImage.SymbolConfiguration = {
         let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20, weight: .semibold))
         
@@ -23,6 +23,9 @@ class LoginCardView: UIView {
         txt.layer.borderWidth = 0.5
         txt.layer.borderColor = UIColor.darkGray.cgColor
         txt.layer.cornerRadius = 13
+        txt.returnKeyType = .done
+        txt.autocapitalizationType = .none
+        txt.clearButtonMode = .whileEditing
         
         let icon = UIImageView(image: UIImage(systemName: "person", withConfiguration: self.iconConfig))
         icon.contentMode = .scaleAspectFit
@@ -41,6 +44,10 @@ class LoginCardView: UIView {
         pwd.layer.borderWidth = 0.5
         pwd.layer.borderColor = UIColor.darkGray.cgColor
         pwd.layer.cornerRadius = 13
+        pwd.isSecureTextEntry = true
+        pwd.returnKeyType = .done
+        pwd.autocapitalizationType = .none
+        pwd.clearButtonMode = .whileEditing
         
         let icon = UIImageView(image: UIImage(systemName: "lock", withConfiguration: self.iconConfig))
         icon.contentMode = .scaleAspectFit

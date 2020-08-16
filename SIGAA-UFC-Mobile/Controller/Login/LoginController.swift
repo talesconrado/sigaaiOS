@@ -10,7 +10,7 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    let loginCard: LoginCardView = {
+    lazy var loginCard: LoginCardView = {
         let lcv = LoginCardView()
         lcv.translatesAutoresizingMaskIntoConstraints = false
         
@@ -36,8 +36,38 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundBlue
+        
+        setupDelegates()
+        setupKeyboardDismiss()
         setupViews()
         setupConstraints()
+    }
+    
+    func loginUser() {
+        SigaaRepository().loginUser(login: "user", senha: "senha") { user  in
+            DispatchQueue.main.async {
+                print(user!.curso)
+            }
+        }
+    }
+    
+    func loginButtonPressed() {
+        
+    }
+
+    func setupDelegates() {
+        loginCard.userTextField.delegate = self
+        loginCard.passwordTextField.delegate = self
+    }
+    
+    func setupKeyboardDismiss() {
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(self.didTapView))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func didTapView() {
+        view.endEditing(true)
     }
     
     func setupViews() {

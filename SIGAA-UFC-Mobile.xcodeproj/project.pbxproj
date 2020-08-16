@@ -21,11 +21,11 @@
 		E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E995EEA224E6C8D800CDEE2C /* LoginTextFields.swift */; };
 		E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F424E2C27000FCA85E /* AppDelegate.swift */; };
 		E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */; };
-		E99BA3F924E2C27000FCA85E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA3F824E2C27000FCA85E /* ViewController.swift */; };
 		E99BA3FE24E2C27100FCA85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99BA3FD24E2C27100FCA85E /* Assets.xcassets */; };
 		E99BA40124E2C27100FCA85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */; };
 		E99BA40C24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA40B24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift */; };
 		E99BA41724E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */; };
+		E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,6 @@
 		E99BA3F124E2C27000FCA85E /* SIGAA-UFC-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIGAA-UFC-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA3F424E2C27000FCA85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E99BA3F824E2C27000FCA85E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E99BA3FD24E2C27100FCA85E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E99BA40024E2C27100FCA85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E99BA40224E2C27100FCA85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		E99BA41224E2C27100FCA85E /* SIGAA-UFC-MobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIGAA-UFC-MobileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIGAA_UFC_MobileUITests.swift; sourceTree = "<group>"; };
 		E99BA41824E2C27100FCA85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +101,7 @@
 		E9068D1A24E575E200FB3DC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E995EEA124E6BF2900CDEE2C /* Extensions */,
 				E924FD0324E6250200127A3B /* Login */,
 				E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */,
 				E99BA3FD24E2C27100FCA85E /* Assets.xcassets */,
@@ -111,6 +112,8 @@
 		E9068D1B24E575E700FB3DC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9068D1E24E5769600FB3DC8 /* Repositories */,
+				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
 				E9068D2724E57D2400FB3DC8 /* User.swift */,
 			);
@@ -120,8 +123,7 @@
 		E9068D1C24E575EB00FB3DC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E99BA3F824E2C27000FCA85E /* ViewController.swift */,
-				E924FCFF24E5E6FD00127A3B /* LoginController.swift */,
+				E9E019DD24E8E8C800CAE203 /* Login */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,8 +159,8 @@
 		E995EEA124E6BF2900CDEE2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E95BE87724E6D10E000E0697 /* Colors.swift */,
 				E95BE87B24E6DCBB000E0697 /* Fonts.swift */,
+				E95BE87724E6D10E000E0697 /* Colors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,12 +190,9 @@
 			children = (
 				E99BA3F624E2C27000FCA85E /* SceneDelegate.swift */,
 				E99BA3F424E2C27000FCA85E /* AppDelegate.swift */,
-				E995EEA124E6BF2900CDEE2C /* Extensions */,
 				E9068D1A24E575E200FB3DC8 /* View */,
 				E9068D1C24E575EB00FB3DC8 /* Controller */,
 				E9068D1B24E575E700FB3DC8 /* Model */,
-				E9068D1E24E5769600FB3DC8 /* Repositories */,
-				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E99BA40224E2C27100FCA85E /* Info.plist */,
 			);
 			path = "SIGAA-UFC-Mobile";
@@ -215,6 +214,15 @@
 				E99BA41824E2C27100FCA85E /* Info.plist */,
 			);
 			path = "SIGAA-UFC-MobileUITests";
+			sourceTree = "<group>";
+		};
+		E9E019DD24E8E8C800CAE203 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E924FCFF24E5E6FD00127A3B /* LoginController.swift */,
+				E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +381,6 @@
 				E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */,
 				E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */,
 				E95BE87824E6D10E000E0697 /* Colors.swift in Sources */,
-				E99BA3F924E2C27000FCA85E /* ViewController.swift in Sources */,
 				E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */,
 				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
 				E9068D2824E57D2400FB3DC8 /* User.swift in Sources */,
@@ -382,6 +389,7 @@
 				E924FD0524E6251500127A3B /* LoginCardView.swift in Sources */,
 				E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */,
 				E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */,
+				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

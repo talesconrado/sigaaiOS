@@ -19,5 +19,13 @@ class LoginTextFields: UITextField {
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 10, y: 0, width: 30, height: self.frame.height)
     }
+    
+    func invalidInput() {
+        layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func validInput() {
+        layer.borderColor = UIColor.darkGray.cgColor
+    }
 
 }
