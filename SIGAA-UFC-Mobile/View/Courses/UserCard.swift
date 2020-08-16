@@ -6,4 +6,8 @@
 //  Copyright © 2020 Tales Conrado. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class UserCard: UIView {
+    
+}

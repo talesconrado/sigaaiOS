@@ -134,29 +134,29 @@ class CourseCard: UITableViewCell {
         NSLayoutConstraint.activate([
             
             title.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 23),
-            title.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 22),
+            title.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 25),
             title.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -48),
             
             code.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
-            code.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 22),
+            code.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 25),
             code.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -48),
             
-            calendarIcon.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 22),
-            calendarIcon.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -40),
-            calendarIcon.widthAnchor.constraint(equalToConstant: 25),
+            calendarIcon.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 25),
+            calendarIcon.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -50),
+            calendarIcon.widthAnchor.constraint(equalToConstant: 30),
             
             dateAndTimeStack.leftAnchor.constraint(equalTo: calendarIcon.rightAnchor, constant: 10),
             dateAndTimeStack.centerYAnchor.constraint(equalTo: calendarIcon.centerYAnchor),
             
-            pinIcon.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -40),
+            pinIcon.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -50),
             pinIcon.leftAnchor.constraint(equalTo: calendarIcon.rightAnchor, constant: 140),
-            pinIcon.widthAnchor.constraint(equalToConstant: 20),
+            pinIcon.widthAnchor.constraint(equalToConstant: 25),
             
             location.centerYAnchor.constraint(equalTo: pinIcon.centerYAnchor),
             location.leftAnchor.constraint(equalTo: pinIcon.rightAnchor, constant: 10),
             
-            cardView.leftAnchor.constraint(equalTo: leftAnchor, constant: 27),
-            cardView.rightAnchor.constraint(equalTo: rightAnchor, constant: -27),
+            cardView.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
+            cardView.rightAnchor.constraint(equalTo: rightAnchor, constant: -30),
             cardView.topAnchor.constraint(equalTo: topAnchor),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])

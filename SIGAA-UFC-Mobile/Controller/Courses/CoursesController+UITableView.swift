@@ -18,7 +18,6 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
             print("Found user nil in cell creation.")
             return UITableViewCell()
         }
-        print("One Cell")
         let course = user.cadeiras[indexPath.section]
         let cell = CourseCard(course: course)
         cell.selectionStyle = .none
@@ -27,7 +26,7 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 157
+        return 170
     }
         
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,7 +38,7 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 20
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
