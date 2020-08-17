@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E902422924EAC56700A6D142 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902422824EAC56700A6D142 /* ImageLoader.swift */; };
+		E902422B24EAC66D00A6D142 /* UserPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E902422A24EAC66D00A6D142 /* UserPicture.swift */; };
 		E9068D2024E5791900FB3DC8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D1F24E5791900FB3DC8 /* Router.swift */; };
 		E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */; };
 		E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2324E57A4900FB3DC8 /* HTTP.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E902422824EAC56700A6D142 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		E902422A24EAC66D00A6D142 /* UserPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPicture.swift; sourceTree = "<group>"; };
 		E9068D1F24E5791900FB3DC8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaAPI.swift; sourceTree = "<group>"; };
 		E9068D2324E57A4900FB3DC8 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				E9068D1F24E5791900FB3DC8 /* Router.swift */,
 				E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */,
 				E9068D2324E57A4900FB3DC8 /* HTTP.swift */,
+				E902422824EAC56700A6D142 /* ImageLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			children = (
 				E982AA5E24E9AD9800B74726 /* CourseCard.swift */,
 				E982AA6024E9ADCB00B74726 /* UserCard.swift */,
+				E902422A24EAC66D00A6D142 /* UserPicture.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -421,10 +427,12 @@
 				E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */,
 				E924FD0524E6251500127A3B /* LoginCardView.swift in Sources */,
 				E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */,
+				E902422924EAC56700A6D142 /* ImageLoader.swift in Sources */,
 				E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */,
 				E94F4B0124E8F19000B408EF /* CoursesController.swift in Sources */,
 				E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */,
 				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
+				E902422B24EAC66D00A6D142 /* UserPicture.swift in Sources */,
 				E982AA6424E9BC7F00B74726 /* CoursesController+UITableView.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 			);

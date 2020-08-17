@@ -89,6 +89,8 @@ class CourseCard: UITableViewCell {
         local.translatesAutoresizingMaskIntoConstraints = false
         local.textColor = .black
         local.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        local.numberOfLines = 2
+        local.adjustsFontSizeToFitWidth = true
         
         return local
     }()
@@ -135,7 +137,7 @@ class CourseCard: UITableViewCell {
             
             title.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 23),
             title.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 25),
-            title.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -48),
+            title.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -23),
             
             code.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
             code.leftAnchor.constraint(equalTo: cardView.leftAnchor, constant: 25),
@@ -147,13 +149,15 @@ class CourseCard: UITableViewCell {
             
             dateAndTimeStack.leftAnchor.constraint(equalTo: calendarIcon.rightAnchor, constant: 10),
             dateAndTimeStack.centerYAnchor.constraint(equalTo: calendarIcon.centerYAnchor),
+            dateAndTimeStack.rightAnchor.constraint(lessThanOrEqualTo: pinIcon.leftAnchor, constant: -5),
             
             pinIcon.topAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -50),
-            pinIcon.leftAnchor.constraint(equalTo: calendarIcon.rightAnchor, constant: 140),
+            pinIcon.leftAnchor.constraint(equalTo: calendarIcon.rightAnchor, constant: 100),
             pinIcon.widthAnchor.constraint(equalToConstant: 25),
             
             location.centerYAnchor.constraint(equalTo: pinIcon.centerYAnchor),
-            location.leftAnchor.constraint(equalTo: pinIcon.rightAnchor, constant: 10),
+            location.leftAnchor.constraint(equalTo: pinIcon.rightAnchor, constant: 5),
+            location.rightAnchor.constraint(equalTo: cardView.rightAnchor, constant: -25),
             
             cardView.leftAnchor.constraint(equalTo: leftAnchor, constant: 30),
             cardView.rightAnchor.constraint(equalTo: rightAnchor, constant: -30),

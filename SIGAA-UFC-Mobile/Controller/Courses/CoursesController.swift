@@ -13,10 +13,18 @@ class CoursesController: UIViewController {
     var user: User?
     var cellId = "cellId"
     
+    lazy var userCard: UserCard = {
+        let user = UserCard(user: self.user!)
+        user.translatesAutoresizingMaskIntoConstraints = false
+        
+        return user
+    }()
+    
     let coursesTableView: UITableView = {
         let tbv = UITableView()
         tbv.translatesAutoresizingMaskIntoConstraints = false
         tbv.separatorStyle = .none
+        tbv.refreshControl = nil
     
         return tbv
     }()
@@ -24,30 +32,48 @@ class CoursesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundBlue
-        mockUser()
+        //mockUser()
+        setupUserCard()
         setupNavigationBar()
         setupTableView()
         setupConstraints()
     }
     
+    func setupUserCard() {
+        view.addSubview(userCard)
+        let imageLoader = ImageLoader()
+        
+        if let strUrl = user?.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+            let imgUrl = URL(string: strUrl) {
+            imageLoader.loadImageWithUrl(imgUrl) { (foto) in
+                self.userCard.userPicture.loaded()
+                self.userCard.userPicture.image = foto
+            }
+        }
+    }
+    
     func setupTableView() {
-        view.addSubview(coursesTableView)
+        view.insertSubview(coursesTableView, belowSubview: userCard)
         coursesTableView.register(CourseCard.self, forCellReuseIdentifier: cellId)
         coursesTableView.delegate = self
         coursesTableView.dataSource = self
     }
     
     func setupNavigationBar() {
-        navigationController?.isNavigationBarHidden = false
-        
-        let navbar = navigationController?.navigationBar
-        
-        navbar?.prefersLargeTitles = true
-        let titleAttributes = [
+        let largeTitleAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.titlesBlue,
             NSAttributedString.Key.font: UIFont.rounded(ofSize: 34, weight: .bold)
         ]
-        navbar?.largeTitleTextAttributes = titleAttributes
+        
+        let smallTitleAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.titlesBlue ]
+        
+        navigationController?.isNavigationBarHidden = false
+        let navbar = navigationController?.navigationBar
+        navbar?.prefersLargeTitles = true
+        navbar?.largeTitleTextAttributes = largeTitleAttributes
+        navbar?.titleTextAttributes = smallTitleAttributes
+        navbar?.compactAppearance?.backgroundEffect = .none
+        navbar?.backgroundColor = .backgroundBlue
         
         navigationItem.setHidesBackButton(true, animated: false)
         self.title = "Disciplinas"
@@ -84,7 +110,13 @@ class CoursesController: UIViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            coursesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            userCard.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
+            userCard.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30),
+            userCard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
+            userCard.heightAnchor.constraint(equalToConstant: 100),
+            
+            coursesTableView.topAnchor.constraint(equalTo: userCard.bottomAnchor, constant: 5),
             coursesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             coursesTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)

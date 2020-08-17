@@ -10,19 +10,19 @@ import Foundation
 
 class SigaaRepository {
     
-    func loginUser(login: String, password: String, completion: @escaping (User?) -> Void = { user in }) {
+    func loginUser(login: String, password: String, completion: @escaping (User?, Int?) -> Void = { user, statusCode in }) {
         
         HTTP.post.request(url: SigaaAPI.login.url, body: ["login":login, "senha": password]) { data, response, errorMessage in
 
             if let errorMessage = errorMessage {
                 print(errorMessage)
-                completion(nil)
+                completion(nil, response?.statusCode)
                 return
             }
 
             guard let data = data, let response = response else {
                 print("No data or response.")
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
@@ -31,10 +31,10 @@ class SigaaRepository {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let user = try? decoder.decode(User.self, from: data)
-                completion(user)
+                completion(user, response.statusCode)
             default:
                 print("Error in request.\nStatus code \(response.statusCode)")
-                completion(nil)
+                completion(nil, response.statusCode)
             }
             
         }

@@ -18,4 +18,6 @@ extension UIColor {
     
     static var titlesGray: UIColor { return UIColor(displayP3Red: 111/255, green: 111/255, blue: 111/255, alpha: 1) }
     
+    static var backgroundLightGray: UIColor { return UIColor(displayP3Red: 249/255, green: 249/255, blue: 249/255, alpha: 0.7)}
+    
 }

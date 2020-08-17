@@ -13,6 +13,15 @@ class LoginButton: UIButton {
     var originalButtonText: String?
     var activityIndicator: UIActivityIndicatorView!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupTaps()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func showLoading() {
         originalButtonText = self.titleLabel?.text
         self.setTitle("", for: .normal)
@@ -33,6 +42,26 @@ class LoginButton: UIButton {
         activityIndicator.stopAnimating()
         self.setImage(UIImage(systemName: "checkmark"), for: .normal)
         self.imageView?.tintColor = .white
+    }
+    
+    private func setupTaps() {
+        addTarget(self, action: #selector(holdRelease), for: .touchUpInside)
+        addTarget(self, action: #selector(heldDown), for: .touchDown)
+        addTarget(self, action: #selector(buttonHeldAndReleased), for: .touchDragExit)
+
+    }
+    
+    //target functions
+    @objc private func heldDown() {
+        backgroundColor = .titlesBlue
+    }
+
+    @objc private func holdRelease() {
+        backgroundColor = .primaryBlue
+    }
+
+    @objc private func buttonHeldAndReleased() {
+        backgroundColor = .primaryBlue
     }
     
     private func createActivityIndicator() -> UIActivityIndicatorView {

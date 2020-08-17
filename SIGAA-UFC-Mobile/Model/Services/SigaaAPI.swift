@@ -13,7 +13,7 @@ enum SigaaAPI: Router {
     case login
     
     var hostname: String {
-        return "127.0.0.1"
+        return "192.168.0.11"
     }
     
     var url: URL? {
@@ -25,7 +25,8 @@ enum SigaaAPI: Router {
         
         //Construindo a URL toda como um Optional
         guard let sigaaURL = sigaaLogin.url else {
-            preconditionFailure("Failed to construct the URL")
+            print("Failed to construct the URL")
+            return nil
         }
         return sigaaURL
     }

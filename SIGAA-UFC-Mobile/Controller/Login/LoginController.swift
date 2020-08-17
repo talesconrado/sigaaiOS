@@ -47,40 +47,53 @@ class LoginController: UIViewController {
         setupConstraints()
     }
     
-    // MARK: DO NOT FORGET
-    //FIX THIS MESSSS
     @objc func loginUser() {
         loginCard.loginButton.showLoading()
         guard let login = loginCard.userTextField.text, let password = loginCard.passwordTextField.text else {
             print("Error: nil text fields.")
             return
         }
-        
-        SigaaRepository().loginUser(login: login, password: password) { user  in
+        SigaaRepository().loginUser(login: login,
+                                    password: password) { user, statusCode  in
             DispatchQueue.main.async {
-                sleep(1)
                 if let user = user {
                     self.showCoursesScreen(from: user)
                 } else {
-                    sleep(1)
-                    self.alertError()
+                    switch statusCode {
+                    case 200:
+                        self.alertUserError()
+                    default:
+                        self.alertConnectionError()
+                    }
                 }
             }
         }
     }
     
     // MARK: Fix dis pls
-    func showCoursesScreen(from user: User) {
+    func showCoursesScreen(from user: User? = nil) {
         loginCard.loginButton.loginSuccesful()
-        sleep(1)
         coursesController.user = user
-        let navigationCourses = UINavigationController(rootViewController: coursesController)
-        present(navigationCourses, animated: true, completion: nil)
+        self.navigationController?.pushViewController(self.coursesController, animated: true)
     }
     
-    func alertError() {
+    func alertUserError() {
         loginCard.loginButton.hideLoading()
-        print("Error.")
+        let alert = UIAlertController(title: "Erro.",
+                                      message: "Confira novamente seu usuário e senha.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func alertConnectionError() {
+        loginCard.loginButton.hideLoading()
+        let alert = UIAlertController(title: "Erro de conexão.",
+                                      message: "Confira sua conexão de rede. " +
+                                                "Se estiver tudo ok, aguarde alguns minutos e tente novamente.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func setupButton() {
