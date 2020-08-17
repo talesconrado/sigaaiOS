@@ -30,4 +30,9 @@ extension LoginController: UITextFieldDelegate {
         
         return true
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor = UIColor.darkGray.cgColor
+        textField.layer.borderWidth = 0.5
+    }
 }

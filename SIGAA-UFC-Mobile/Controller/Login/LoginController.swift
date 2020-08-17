@@ -77,6 +77,10 @@ class LoginController: UIViewController {
         self.navigationController?.pushViewController(self.coursesController, animated: true)
     }
     
+    func saveUserCredentials() {
+        
+    }
+    
     func alertUserError() {
         loginCard.loginButton.hideLoading()
         let alert = UIAlertController(title: "Erro.",
