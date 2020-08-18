@@ -47,17 +47,22 @@ class LoginController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        clearFields()
+    }
+    
     @objc func loginUser() {
+        view.endEditing(true)
         loginCard.loginButton.showLoading()
         guard let login = loginCard.userTextField.text, let password = loginCard.passwordTextField.text else {
             print("Error: nil text fields.")
             return
         }
         SigaaRepository().loginUser(login: login,
-                                    password: password) { user, statusCode  in
+                                    password: password) { sigaaUserInfo, statusCode  in
             DispatchQueue.main.async {
-                if let user = user {
-                    self.showCoursesScreen(from: user)
+                if let sigaaUserInfo = sigaaUserInfo {
+                    self.showCoursesScreen(from: sigaaUserInfo)
                 } else {
                     switch statusCode {
                     case 200:
@@ -71,14 +76,10 @@ class LoginController: UIViewController {
     }
     
     // MARK: Fix dis pls
-    func showCoursesScreen(from user: User? = nil) {
+    func showCoursesScreen(from sigaaUserInfo: SigaaUserInfo? = nil) {
         loginCard.loginButton.loginSuccesful()
-        coursesController.user = user
+        coursesController.sigaaUserInfo = sigaaUserInfo
         self.navigationController?.pushViewController(self.coursesController, animated: true)
-    }
-    
-    func saveUserCredentials() {
-        
     }
     
     func alertUserError() {
@@ -113,6 +114,7 @@ class LoginController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: #selector(self.didTapView))
         self.view.addGestureRecognizer(tapRecognizer)
+        self.loginCard.addGestureRecognizer(tapRecognizer)
     }
     
     @objc func didTapView() {
@@ -140,5 +142,14 @@ class LoginController: UIViewController {
             backgroundIllustration.topAnchor.constraint(equalTo: loginCard.bottomAnchor, constant: -50)
         
         ])
+    }
+    
+    func clearFields() {
+        loginCard.passwordTextField.text = ""
+        loginCard.passwordTextField.resignFirstResponder()
+        loginCard.userTextField.text = ""
+        loginCard.userTextField.resignFirstResponder()
+        loginCard.loginButton.setTitle("Entrar", for: .normal)
+        loginCard.loginButton.setImage(nil, for: .normal)
     }
 }

@@ -22,11 +22,11 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let user = user else {
+        guard let userData = userData else {
             print("Found user nil in cell creation.")
             return UITableViewCell()
         }
-        let course = user.cadeiras[indexPath.section]
+        let course = userData.sigaaUserInfo.cadeiras[indexPath.section]
         let cell = CourseCard(course: course)
         cell.selectionStyle = .none
         
@@ -38,8 +38,8 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
     }
         
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let user = user {
-            return user.cadeiras.count
+        if let userData = userData {
+            return userData.sigaaUserInfo.cadeiras.count
         } else {
             return 0
         }

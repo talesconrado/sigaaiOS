@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Course: Decodable {
+struct Course: Codable {
     var codigo: String
     var componente: String
     var cargaHoraria: Int

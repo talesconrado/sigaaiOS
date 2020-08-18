@@ -10,7 +10,7 @@ import Foundation
 
 class SigaaRepository {
     
-    func loginUser(login: String, password: String, completion: @escaping (User?, Int?) -> Void = { user, statusCode in }) {
+    func loginUser(login: String, password: String, completion: @escaping (SigaaUserInfo?, Int?) -> Void = { sigaaUserInfo, statusCode in }) {
         
         HTTP.post.request(url: SigaaAPI.login.url, body: ["login":login, "senha": password]) { data, response, errorMessage in
 
@@ -30,7 +30,7 @@ class SigaaRepository {
             case 200:
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let user = try? decoder.decode(User.self, from: data)
+                let user = try? decoder.decode(SigaaUserInfo.self, from: data)
                 completion(user, response.statusCode)
             default:
                 print("Error in request.\nStatus code \(response.statusCode)")

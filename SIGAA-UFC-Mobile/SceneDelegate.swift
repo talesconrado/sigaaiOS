@@ -17,19 +17,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        
+                
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
-        if isUserLoggedIn {
-            print("Usuário logado.")
-        } else {
-            let mainViewController = UINavigationController(rootViewController: LoginController())
-            window?.rootViewController = mainViewController
-        }
-  
-//        let mainViewController = UINavigationController(rootViewController: CoursesController())
-//        window?.rootViewController = mainViewController
+        let login = LoginController()
+        let courses = CoursesController()
         
+        let navigation = UINavigationController(rootViewController: login)
+        
+        if isUserLoggedIn {
+            navigation.pushViewController(courses, animated: false)
+        }
+        
+        window?.rootViewController = navigation
+        window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
 
     }

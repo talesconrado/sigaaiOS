@@ -10,11 +10,12 @@ import UIKit
 
 class CoursesController: UIViewController {
     
-    var user: User?
+    var userData: UserData?
+    var sigaaUserInfo: SigaaUserInfo?
     var cellId = "cellId"
     
     lazy var userCard: UserCard = {
-        let user = UserCard(user: self.user!)
+        let user = UserCard(user: self.userData!.sigaaUserInfo)
         user.translatesAutoresizingMaskIntoConstraints = false
         
         return user
@@ -23,27 +24,51 @@ class CoursesController: UIViewController {
     let coursesTableView: UITableView = {
         let tbv = UITableView()
         tbv.translatesAutoresizingMaskIntoConstraints = false
+        tbv.bouncesZoom = false
         tbv.separatorStyle = .none
         tbv.refreshControl = nil
     
         return tbv
     }()
     
+    lazy var semesterLabel: UILabel = {
+        let semester = UILabel()
+        semester.translatesAutoresizingMaskIntoConstraints = false
+        semester.text = self.userData?.sigaaUserInfo.semestre
+        semester.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        return semester
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundBlue
-        //mockUser()
+        
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+        if isUserLoggedIn {
+            userData = Database.shared.loadData()
+        } else {
+            if let sigaaInfo = sigaaUserInfo {
+                userData = UserData(sigaaUserInfo: sigaaInfo, classNotes: [])
+                UserDefaults.standard.set(1, forKey: "isUserLoggedIn")
+                Database.shared.saveData(from: userData!)
+            }
+        }
+        
         setupUserCard()
         setupNavigationBar()
+        setupBarButton()
         setupTableView()
         setupConstraints()
     }
     
     func setupUserCard() {
-        view.addSubview(userCard)
+        navigationController?.navigationBar.addSubview(userCard)
+        navigationController?.navigationBar.addSubview(semesterLabel)
         let imageLoader = ImageLoader()
         
-        if let strUrl = user?.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+        if let strUrl = userData!.sigaaUserInfo.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
             let imgUrl = URL(string: strUrl) {
             imageLoader.loadImageWithUrl(imgUrl) { (foto) in
                 self.userCard.userPicture.loaded()
@@ -79,44 +104,34 @@ class CoursesController: UIViewController {
         self.title = "Disciplinas"
     }
     
-    func mockUser() {
-        let courseOne = Course(codigo: "CK0235",
-                               componente: "TÉCNICAS DE PROGRAMAÇÃO 1",
-                               cargaHoraria: 64,
-                               local: "915/1054",
-                               dias: "TER/QUI",
-                               horario: "08:00-10:00")
-        
-        let courseTwo = Course(codigo: "CK0265",
-                               componente: "SISTEMAS DE GERENCIAMENTO DE BANCOS DE DADOS",
-                               cargaHoraria: 64,
-                               local: "LEC 2 951",
-                               dias: "SEG/QUA/SEX",
-                               horario: "18:00-20:00")
-        
-        let mockUser = User(error: false,
-                            login: "talesconrado",
-                            nome: "TALES MATEUS CHAVES CONRADO",
-                            foto: "https://si3.ufc.br/sigaa/img/no_picture.png",
-                            matricula: "123894",
-                            curso: "CIÊNCIA DA COMPUTAÇÃO - MT",
-                            nivel: "GRADUAÇÃO",
-                            status: "ATIVO",
-                            entrada: "2019.1",
-                            semestre: "2020.1",
-                            cadeiras: [courseOne, courseTwo])
-        self.user = mockUser
+    func setupBarButton() {
+        let logoff = UIBarButtonItem(title: "Sair", style: .plain, target: self, action: #selector(openLogoffSheet))
+        logoff.tintColor = .primaryBlue
+        navigationItem.rightBarButtonItem = logoff
+    }
+    
+    @objc func openLogoffSheet() {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "Fazer logoff", style: .destructive, handler: { (_) in
+            self.navigationController?.popToRootViewController(animated: true)
+            UserDefaults.standard.set(0, forKey: "isUserLoggedIn")
+        }))
+        sheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        self.present(sheet, animated: true, completion: nil)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            userCard.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 18),
-            userCard.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30),
-            userCard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
+            userCard.topAnchor.constraint(equalTo: navigationController!.navigationBar.bottomAnchor, constant: 5),
+            userCard.leftAnchor.constraint(equalTo: navigationController!.navigationBar.leftAnchor, constant: 30),
+            userCard.rightAnchor.constraint(equalTo: navigationController!.navigationBar.rightAnchor, constant: -30),
             userCard.heightAnchor.constraint(equalToConstant: 100),
             
-            coursesTableView.topAnchor.constraint(equalTo: userCard.bottomAnchor, constant: 5),
+            semesterLabel.topAnchor.constraint(equalTo: userCard.bottomAnchor),
+            semesterLabel.centerXAnchor.constraint(equalTo: navigationController!.navigationBar.centerXAnchor),
+            
+            coursesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
             coursesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             coursesTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)

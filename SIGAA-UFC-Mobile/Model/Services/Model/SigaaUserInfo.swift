@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct SigaaUserInfo: Codable {
     var error: Bool
     var login: String
     var nome: String

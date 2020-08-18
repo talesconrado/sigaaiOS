@@ -54,7 +54,7 @@ class UserCard: UIView {
         return stack
     }()
     
-    convenience init(user: User) {
+    convenience init(user: SigaaUserInfo) {
         self.init()
         userName.text = user.nome.capitalized
         userId.text = user.matricula
