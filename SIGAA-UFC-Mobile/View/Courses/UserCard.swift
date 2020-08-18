@@ -66,7 +66,6 @@ class UserCard: UIView {
     }
     
     func setupCard() {
-        backgroundColor = UIColor(white: 1, alpha: 0.5)
         layer.cornerRadius = 15
     }
     
@@ -75,14 +74,6 @@ class UserCard: UIView {
         userInfoStack.addArrangedSubview(program)
         userInfoStack.addArrangedSubview(userId)
         addSubview(userInfoStack)
-    }
-    
-    func setupBlur() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(blurEffectView)
     }
     
     func setupConstraints() {

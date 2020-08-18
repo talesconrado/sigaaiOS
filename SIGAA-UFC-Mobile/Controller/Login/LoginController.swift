@@ -10,7 +10,7 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    let coursesController = CoursesController()
+    let coursesController = CoursesListController()
     
     lazy var loginCard: LoginCardView = {
         let lcv = LoginCardView()
@@ -114,7 +114,6 @@ class LoginController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer()
         tapRecognizer.addTarget(self, action: #selector(self.didTapView))
         self.view.addGestureRecognizer(tapRecognizer)
-        self.loginCard.addGestureRecognizer(tapRecognizer)
     }
     
     @objc func didTapView() {

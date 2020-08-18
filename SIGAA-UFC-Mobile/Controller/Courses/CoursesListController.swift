@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesController: UIViewController {
+class CoursesListController: UIViewController {
     
     var userData: UserData?
     var sigaaUserInfo: SigaaUserInfo?
@@ -24,11 +24,23 @@ class CoursesController: UIViewController {
     let coursesTableView: UITableView = {
         let tbv = UITableView()
         tbv.translatesAutoresizingMaskIntoConstraints = false
-        tbv.bouncesZoom = false
+        tbv.backgroundColor = .backgroundBlue
         tbv.separatorStyle = .none
         tbv.refreshControl = nil
     
         return tbv
+    }()
+    
+    lazy var bottomLineView: UIView = {
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = .backgroundBlue
+        line.layer.shadowColor = UIColor.darkGray.cgColor
+        line.layer.shadowRadius = 3
+        line.layer.shadowOpacity = 0.9
+        line.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+        
+        return line
     }()
     
     lazy var semesterLabel: UILabel = {
@@ -42,7 +54,7 @@ class CoursesController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundBlue
+        view.backgroundColor = .white
         
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
@@ -66,6 +78,7 @@ class CoursesController: UIViewController {
     func setupUserCard() {
         view.addSubview(userCard)
         view.addSubview(semesterLabel)
+        view.addSubview(bottomLineView)
         let imageLoader = ImageLoader()
         
         if let strUrl = userData!.sigaaUserInfo.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
@@ -89,12 +102,10 @@ class CoursesController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.titlesBlue,
             NSAttributedString.Key.font: UIFont.rounded(ofSize: 34, weight: .bold)
         ]
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
         let smallTitleAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.titlesBlue ]
         
         navigationController?.isNavigationBarHidden = false
         let navbar = navigationController?.navigationBar
-        navbar?.prefersLargeTitles = true
         navbar?.largeTitleTextAttributes = largeTitleAttributes
         navbar?.titleTextAttributes = smallTitleAttributes
         navbar?.compactAppearance?.backgroundEffect = .none
@@ -131,7 +142,12 @@ class CoursesController: UIViewController {
             semesterLabel.topAnchor.constraint(equalTo: userCard.bottomAnchor),
             semesterLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            coursesTableView.topAnchor.constraint(equalTo: semesterLabel.bottomAnchor, constant: 10),
+            bottomLineView.heightAnchor.constraint(equalToConstant: 2),
+            bottomLineView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            bottomLineView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            bottomLineView.topAnchor.constraint(equalTo: semesterLabel.bottomAnchor, constant: 12),
+            
+            coursesTableView.topAnchor.constraint(equalTo: bottomLineView.bottomAnchor),
             coursesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             coursesTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)

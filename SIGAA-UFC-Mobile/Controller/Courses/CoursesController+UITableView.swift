@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CoursesController: UITableViewDelegate, UITableViewDataSource {
+extension CoursesListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
@@ -53,5 +53,10 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        print(section)
     }
 }
