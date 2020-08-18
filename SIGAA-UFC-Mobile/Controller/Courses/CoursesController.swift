@@ -64,8 +64,8 @@ class CoursesController: UIViewController {
     }
     
     func setupUserCard() {
-        navigationController?.navigationBar.addSubview(userCard)
-        navigationController?.navigationBar.addSubview(semesterLabel)
+        view.addSubview(userCard)
+        view.addSubview(semesterLabel)
         let imageLoader = ImageLoader()
         
         if let strUrl = userData!.sigaaUserInfo.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
@@ -89,7 +89,7 @@ class CoursesController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.titlesBlue,
             NSAttributedString.Key.font: UIFont.rounded(ofSize: 34, weight: .bold)
         ]
-        
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
         let smallTitleAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.titlesBlue ]
         
         navigationController?.isNavigationBarHidden = false
@@ -107,7 +107,7 @@ class CoursesController: UIViewController {
     func setupBarButton() {
         let logoff = UIBarButtonItem(title: "Sair", style: .plain, target: self, action: #selector(openLogoffSheet))
         logoff.tintColor = .primaryBlue
-        navigationItem.rightBarButtonItem = logoff
+        navigationItem.leftBarButtonItem = logoff
     }
     
     @objc func openLogoffSheet() {
@@ -123,15 +123,15 @@ class CoursesController: UIViewController {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            userCard.topAnchor.constraint(equalTo: navigationController!.navigationBar.bottomAnchor, constant: 5),
-            userCard.leftAnchor.constraint(equalTo: navigationController!.navigationBar.leftAnchor, constant: 30),
-            userCard.rightAnchor.constraint(equalTo: navigationController!.navigationBar.rightAnchor, constant: -30),
+            userCard.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            userCard.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30),
+            userCard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
             userCard.heightAnchor.constraint(equalToConstant: 100),
             
             semesterLabel.topAnchor.constraint(equalTo: userCard.bottomAnchor),
-            semesterLabel.centerXAnchor.constraint(equalTo: navigationController!.navigationBar.centerXAnchor),
+            semesterLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
-            coursesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            coursesTableView.topAnchor.constraint(equalTo: semesterLabel.bottomAnchor, constant: 10),
             coursesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             coursesTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)
