@@ -10,5 +10,5 @@ import Foundation
 
 struct UserData: Codable {
     var sigaaUserInfo: SigaaUserInfo
-    var classNotes: [ClassNotes]
+    var classNotes: [String: ClassNotes]
 }

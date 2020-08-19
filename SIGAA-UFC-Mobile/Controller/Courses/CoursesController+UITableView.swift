@@ -56,7 +56,12 @@ extension CoursesListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = indexPath.section
-        print(section)
+        let classNoteVC = ClassNotesController()
+        if let course = userData?.sigaaUserInfo.cadeiras[indexPath.section] {
+            classNoteVC.userNotes = initializeClassNotes(course: course)
+        } else {
+            print("Error while unwrapping course.")
+        }
+        navigationController?.pushViewController(classNoteVC, animated: true)
     }
 }

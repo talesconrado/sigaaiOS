@@ -58,7 +58,7 @@ class LoginController: UIViewController {
             print("Error: nil text fields.")
             return
         }
-        SigaaRepository().loginUser(login: login,
+        SigaaService().loginUser(login: login,
                                     password: password) { sigaaUserInfo, statusCode  in
             DispatchQueue.main.async {
                 if let sigaaUserInfo = sigaaUserInfo {

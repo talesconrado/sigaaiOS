@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteCell: UICollectionViewCell {
+class NoteCell: UITableViewCell {
     
     let noteTitle: UILabel = {
         let title = UILabel()
@@ -38,15 +38,12 @@ class NoteCell: UICollectionViewCell {
         return stack
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
         setupStackView()
         setupConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func setupStackView() {
         addSubview(noteStack)

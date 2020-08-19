@@ -62,7 +62,7 @@ class CoursesListController: UIViewController {
             userData = Database.shared.loadData()
         } else {
             if let sigaaInfo = sigaaUserInfo {
-                userData = UserData(sigaaUserInfo: sigaaInfo, classNotes: [])
+                userData = UserData(sigaaUserInfo: sigaaInfo, classNotes: [:])
                 UserDefaults.standard.set(1, forKey: "isUserLoggedIn")
                 Database.shared.saveData(from: userData!)
             }
@@ -129,6 +129,15 @@ class CoursesListController: UIViewController {
         }))
         sheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         self.present(sheet, animated: true, completion: nil)
+    }
+    
+    func initializeClassNotes(course: Course) -> ClassNotes {
+        if let classNotes = userData?.classNotes[course.codigo] {
+            return classNotes
+        } else {
+            let newClassNote = ClassNotes(courseTitle: course.componente, tasks: [], notes: [])
+            return newClassNote
+        }
     }
     
     func setupConstraints() {

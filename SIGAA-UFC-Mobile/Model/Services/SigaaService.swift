@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SigaaRepository {
+class SigaaService {
     
     func loginUser(login: String, password: String, completion: @escaping (SigaaUserInfo?, Int?) -> Void = { sigaaUserInfo, statusCode in }) {
         

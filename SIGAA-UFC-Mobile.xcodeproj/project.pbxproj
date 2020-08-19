@@ -17,7 +17,7 @@
 		E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2324E57A4900FB3DC8 /* HTTP.swift */; };
 		E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2524E57C8E00FB3DC8 /* Course.swift */; };
 		E9068D2824E57D2400FB3DC8 /* SigaaUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */; };
-		E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */; };
+		E9068D2A24E57EDB00FB3DC8 /* SigaaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2924E57EDB00FB3DC8 /* SigaaService.swift */; };
 		E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924FCFF24E5E6FD00127A3B /* LoginController.swift */; };
 		E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924FD0124E5E76A00127A3B /* LoginTitleView.swift */; };
 		E924FD0524E6251500127A3B /* LoginCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924FD0424E6251500127A3B /* LoginCardView.swift */; };
@@ -25,6 +25,7 @@
 		E94F4AFF24E8ED7400B408EF /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F4AFE24E8ED7400B408EF /* LoginButton.swift */; };
 		E94F4B0124E8F19000B408EF /* CoursesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F4B0024E8F19000B408EF /* CoursesListController.swift */; };
 		E95119FD24EC054F009ED932 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95119FC24EC054F009ED932 /* NoteCell.swift */; };
+		E957786224ED53FD00671894 /* ClassNotesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */; };
 		E95BE87824E6D10E000E0697 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87724E6D10E000E0697 /* Colors.swift */; };
 		E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87B24E6DCBB000E0697 /* Fonts.swift */; };
 		E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA5E24E9AD9800B74726 /* CourseCard.swift */; };
@@ -68,7 +69,7 @@
 		E9068D2324E57A4900FB3DC8 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		E9068D2524E57C8E00FB3DC8 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaUserInfo.swift; sourceTree = "<group>"; };
-		E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaRepository.swift; sourceTree = "<group>"; };
+		E9068D2924E57EDB00FB3DC8 /* SigaaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaService.swift; sourceTree = "<group>"; };
 		E924FCFF24E5E6FD00127A3B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E924FD0124E5E76A00127A3B /* LoginTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTitleView.swift; sourceTree = "<group>"; };
 		E924FD0424E6251500127A3B /* LoginCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCardView.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		E94F4AFE24E8ED7400B408EF /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		E94F4B0024E8F19000B408EF /* CoursesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesListController.swift; sourceTree = "<group>"; };
 		E95119FC24EC054F009ED932 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassNotesController+UITableView.swift"; sourceTree = "<group>"; };
 		E95BE87724E6D10E000E0697 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E95BE87B24E6DCBB000E0697 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E982AA5E24E9AD9800B74726 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
@@ -122,15 +124,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E902423224EB3F9200A6D142 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
-				E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		E9068D1A24E575E200FB3DC8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +142,8 @@
 			children = (
 				E9068D1E24E5769600FB3DC8 /* Repositories */,
 				E9068D1D24E5767F00FB3DC8 /* Services */,
-				E902422C24EB3D3700A6D142 /* Database.swift */,
+				E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */,
+				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
 				E902422E24EB3DB800A6D142 /* ClassNotes.swift */,
 				E902423024EB3F4200A6D142 /* UserData.swift */,
 			);
@@ -169,7 +163,7 @@
 		E9068D1D24E5767F00FB3DC8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E902423224EB3F9200A6D142 /* Model */,
+				E9068D2924E57EDB00FB3DC8 /* SigaaService.swift */,
 				E9068D1F24E5791900FB3DC8 /* Router.swift */,
 				E9068D2124E5797800FB3DC8 /* SigaaAPI.swift */,
 				E9068D2324E57A4900FB3DC8 /* HTTP.swift */,
@@ -181,7 +175,7 @@
 		E9068D1E24E5769600FB3DC8 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				E9068D2924E57EDB00FB3DC8 /* SigaaRepository.swift */,
+				E902422C24EB3D3700A6D142 /* Database.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -201,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E93B101E24EC7026000BE95B /* ClassNotesController.swift */,
+				E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */,
 			);
 			path = ClassNotes;
 			sourceTree = "<group>";
@@ -457,13 +452,14 @@
 				E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */,
 				E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */,
 				E902423124EB3F4200A6D142 /* UserData.swift in Sources */,
-				E9068D2A24E57EDB00FB3DC8 /* SigaaRepository.swift in Sources */,
+				E9068D2A24E57EDB00FB3DC8 /* SigaaService.swift in Sources */,
 				E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */,
 				E95BE87824E6D10E000E0697 /* Colors.swift in Sources */,
 				E93B101F24EC7026000BE95B /* ClassNotesController.swift in Sources */,
 				E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */,
 				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
 				E9068D2824E57D2400FB3DC8 /* SigaaUserInfo.swift in Sources */,
+				E957786224ED53FD00671894 /* ClassNotesController+UITableView.swift in Sources */,
 				E94F4AFF24E8ED7400B408EF /* LoginButton.swift in Sources */,
 				E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */,
 				E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */,
