@@ -26,6 +26,9 @@
 		E94F4B0124E8F19000B408EF /* CoursesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F4B0024E8F19000B408EF /* CoursesListController.swift */; };
 		E95119FD24EC054F009ED932 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95119FC24EC054F009ED932 /* NoteCell.swift */; };
 		E957786224ED53FD00671894 /* ClassNotesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */; };
+		E957786424EDDCB300671894 /* ModalNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E957786324EDDCB300671894 /* ModalNote.swift */; };
+		E957786624EDDCBB00671894 /* ModalTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E957786524EDDCBB00671894 /* ModalTask.swift */; };
+		E957786824EDE99400671894 /* ModalNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E957786724EDE99400671894 /* ModalNoteController.swift */; };
 		E95BE87824E6D10E000E0697 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87724E6D10E000E0697 /* Colors.swift */; };
 		E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95BE87B24E6DCBB000E0697 /* Fonts.swift */; };
 		E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E982AA5E24E9AD9800B74726 /* CourseCard.swift */; };
@@ -78,6 +81,9 @@
 		E94F4B0024E8F19000B408EF /* CoursesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesListController.swift; sourceTree = "<group>"; };
 		E95119FC24EC054F009ED932 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassNotesController+UITableView.swift"; sourceTree = "<group>"; };
+		E957786324EDDCB300671894 /* ModalNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNote.swift; sourceTree = "<group>"; };
+		E957786524EDDCBB00671894 /* ModalTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTask.swift; sourceTree = "<group>"; };
+		E957786724EDE99400671894 /* ModalNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNoteController.swift; sourceTree = "<group>"; };
 		E95BE87724E6D10E000E0697 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E95BE87B24E6DCBB000E0697 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E982AA5E24E9AD9800B74726 /* CourseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCard.swift; sourceTree = "<group>"; };
@@ -140,7 +146,7 @@
 		E9068D1B24E575E700FB3DC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E9068D1E24E5769600FB3DC8 /* Repositories */,
+				E9068D1E24E5769600FB3DC8 /* Repository */,
 				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */,
 				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
@@ -172,12 +178,12 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		E9068D1E24E5769600FB3DC8 /* Repositories */ = {
+		E9068D1E24E5769600FB3DC8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				E902422C24EB3D3700A6D142 /* Database.swift */,
 			);
-			path = Repositories;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		E924FD0324E6250200127A3B /* Login */ = {
@@ -196,6 +202,7 @@
 			children = (
 				E93B101E24EC7026000BE95B /* ClassNotesController.swift */,
 				E957786124ED53FD00671894 /* ClassNotesController+UITableView.swift */,
+				E957786724EDE99400671894 /* ModalNoteController.swift */,
 			);
 			path = ClassNotes;
 			sourceTree = "<group>";
@@ -204,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				E95119FC24EC054F009ED932 /* NoteCell.swift */,
+				E957786324EDDCB300671894 /* ModalNote.swift */,
+				E957786524EDDCBB00671894 /* ModalTask.swift */,
 			);
 			path = ClassNotes;
 			sourceTree = "<group>";
@@ -459,6 +468,7 @@
 				E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */,
 				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
 				E9068D2824E57D2400FB3DC8 /* SigaaUserInfo.swift in Sources */,
+				E957786624EDDCBB00671894 /* ModalTask.swift in Sources */,
 				E957786224ED53FD00671894 /* ClassNotesController+UITableView.swift in Sources */,
 				E94F4AFF24E8ED7400B408EF /* LoginButton.swift in Sources */,
 				E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */,
@@ -472,9 +482,11 @@
 				E902422F24EB3DB800A6D142 /* ClassNotes.swift in Sources */,
 				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				E902422B24EAC66D00A6D142 /* UserPicture.swift in Sources */,
+				E957786824EDE99400671894 /* ModalNoteController.swift in Sources */,
 				E982AA6424E9BC7F00B74726 /* CoursesController+UITableView.swift in Sources */,
 				E99BA3F724E2C27000FCA85E /* SceneDelegate.swift in Sources */,
 				E902422D24EB3D3700A6D142 /* Database.swift in Sources */,
+				E957786424EDDCB300671894 /* ModalNote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

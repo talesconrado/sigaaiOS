@@ -10,10 +10,13 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     
+    var note: Note?
+    
     let noteTitle: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textColor = .titlesBlue
+        title.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         title.textAlignment = .left
         title.numberOfLines = 1
         
@@ -23,39 +26,37 @@ class NoteCell: UITableViewCell {
     let noteContent: UILabel = {
         let content = UILabel()
         content.translatesAutoresizingMaskIntoConstraints = false
-        content.textColor = .lightGray
+        content.textColor = .gray
         content.textAlignment = .left
         content.numberOfLines = 2
+        content.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         
         return content
     }()
     
-    let noteStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        
-        return stack
-    }()
-    
-    convenience override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupStackView()
+    func update() {
+        noteTitle.text = note?.title
+        noteContent.text = note?.text
+        backgroundColor = .white
+        setupViews()
         setupConstraints()
     }
     
-    
-    func setupStackView() {
-        addSubview(noteStack)
-        noteStack.addArrangedSubview(noteTitle)
-        noteStack.addArrangedSubview(noteContent)
+    func setupViews() {
+        addSubview(noteTitle)
+        addSubview(noteContent)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            noteStack.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            noteStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10),
-            noteStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 10)
+            noteTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            noteTitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            noteTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
+            
+            noteContent.topAnchor.constraint(equalTo: noteTitle.bottomAnchor, constant: 1),
+            noteContent.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
+            noteContent.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            noteContent.rightAnchor.constraint(equalTo: rightAnchor, constant: -15)
         ])
     }
     

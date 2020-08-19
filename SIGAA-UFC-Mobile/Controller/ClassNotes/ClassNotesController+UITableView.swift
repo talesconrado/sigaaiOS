@@ -8,23 +8,68 @@
 
 import UIKit
 
+//swiftlint:disable force_cast
 extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentedControl.selectedSegmentIndex == 0 {
-            return userNotes?.tasks.count ?? 0
-        } else {
             return userNotes?.notes.count ?? 0
+        } else {
+            switch section {
+            case 0:
+                return tasksArray[0].count
+            default:
+                return tasksArray[1].count
+            }
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return 1
+        } else {
+            return 2
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let titles = ["Pendentes", "Feitas"]
+        if segmentedControl.selectedSegmentIndex == 1 {
+            return titles[section]
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentedControl.selectedSegmentIndex == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: noteCellId, for: indexPath)
-            return cell
+            return setupNoteCell(tableView, cellForRowAt: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: taskCellId, for: indexPath)
-            return cell
+            tableView.separatorStyle = .singleLine
+            return setupTaskCell(tableView, cellForRowAt: indexPath)
         }
     }
     
+    func setupNoteCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: noteCellId, for: indexPath) as! NoteCell
+        cell.note = userNotes?.notes[indexPath.row]
+        cell.selectionStyle = .none
+        cell.update()
+        return cell
+    }
+    
+    func setupTaskCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: taskCellId) ?? UITableViewCell(style: .value1, reuseIdentifier: taskCellId)
+        cell.textLabel?.text = tasksArray[indexPath.section][indexPath.row].title
+        cell.accessoryType = .disclosureIndicator
+        cell.detailTextLabel?.text = tasksArray[indexPath.section][indexPath.row].deadline.description
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return 80
+        } else {
+            return 45
+        }
+    }
 }
