@@ -15,6 +15,7 @@ class ClassNotesController: UIViewController {
     
     var userNotes: ClassNotes?
     var tasksArray: [[Task]] = [[],[]]
+    weak var delegate: ClassNotesDelegate?
     
     lazy var courseTitle: UILabel = {
         let title = UILabel()
@@ -55,13 +56,17 @@ class ClassNotesController: UIViewController {
         setupNavBar()
         setupTableView()
         setupViews()
-        mockUserNotes()
         setupConstraints()
         updateTasksArray()
     }
     
     @objc func didSegmentChange() {
         notesTableView.reloadData()
+    }
+    
+    func updateUserNotes() {
+        let data = Database.shared.loadData()
+        userNotes = data?.classNotes[userNotes!.code]
     }
     
     func updateTasksArray() {
@@ -77,17 +82,6 @@ class ClassNotesController: UIViewController {
             }
         }
         
-    }
-    
-    func mockUserNotes() {
-        let bigText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at diam urna. Praesent bibendum magna sdede and forever young"
-        userNotes?.tasks = [Task(title: "Projeto 2", deadline: Date(), isTaskDone: false),
-                            Task(title: "Trabalho", deadline: Date(), isTaskDone: true)]
-        
-        userNotes?.notes = [Note(title: "MVC",
-                                 text: "Lorem ipsum dolor sit amet"),
-                            Note(title: "Teste",
-                                 text: bigText)]
     }
     
     func setupTableView() {
@@ -110,9 +104,7 @@ class ClassNotesController: UIViewController {
         let newTask = UIAlertAction(title: "Nova Tarefa", style: .default) { (_) in
             print("nova tarefa")
         }
-        let cancel = UIAlertAction(title: "Cancelar", style: .cancel) { (_) in
-            print("cancelaste")
-        }
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         actionSheet.addAction(newNote)
         actionSheet.addAction(newTask)
         actionSheet.addAction(cancel)
@@ -120,10 +112,17 @@ class ClassNotesController: UIViewController {
         present(actionSheet, animated: true)
     }
     
-    func showNoteModal(title: String = "", text: String = "") {
-        let modalNoteVC = UINavigationController(rootViewController: ModalNoteController())
-        modalNoteVC.modalPresentationStyle = .formSheet
-        navigationController?.present(modalNoteVC, animated: true, completion: nil)
+    func showNoteModal(title: String = "", text: String = "", index: Int? = nil) {
+        let modalNoteVC = ModalNoteController()
+        modalNoteVC.delegate = delegate
+        modalNoteVC.code = userNotes?.code
+        modalNoteVC.presenter = self
+        modalNoteVC.contentView.title.text = title
+        modalNoteVC.contentView.text.text = text
+        modalNoteVC.index = index
+        let navigation = UINavigationController(rootViewController: modalNoteVC)
+        navigation.modalPresentationStyle = .formSheet
+        present(navigation, animated: true, completion: nil)
     }
     
     func setupViews() {

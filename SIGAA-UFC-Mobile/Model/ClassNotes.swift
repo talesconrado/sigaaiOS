@@ -21,6 +21,7 @@ struct Note: Codable {
 
 struct ClassNotes: Codable {
     var courseTitle: String
+    var code: String
     var tasks: [Task]
     var notes: [Note]
 }

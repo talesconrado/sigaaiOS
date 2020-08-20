@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesListController: UIViewController {
+class CoursesListController: UIViewController, ClassNotesDelegate {
     
     var userData: UserData?
     var sigaaUserInfo: SigaaUserInfo?
@@ -56,6 +56,15 @@ class CoursesListController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        loadData()
+        setupUserCard()
+        setupNavigationBar()
+        setupBarButton()
+        setupTableView()
+        setupConstraints()
+    }
+    
+    func loadData() {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
         if isUserLoggedIn {
@@ -67,12 +76,6 @@ class CoursesListController: UIViewController {
                 Database.shared.saveData(from: userData!)
             }
         }
-        
-        setupUserCard()
-        setupNavigationBar()
-        setupBarButton()
-        setupTableView()
-        setupConstraints()
     }
     
     func setupUserCard() {
@@ -133,11 +136,40 @@ class CoursesListController: UIViewController {
     
     func initializeClassNotes(course: Course) -> ClassNotes {
         if let classNotes = userData?.classNotes[course.codigo] {
+            print("Entrou aqui, não criou classNote.")
             return classNotes
         } else {
-            let newClassNote = ClassNotes(courseTitle: course.componente, tasks: [], notes: [])
+            print("Entrou aqui, classNotes era NIL.")
+            let newClassNote = ClassNotes(courseTitle: course.componente, code: course.codigo, tasks: [], notes: [])
+            userData?.classNotes[course.codigo] = newClassNote
             return newClassNote
         }
+    }
+    
+    func addNote(code: String, note: Note, at index: Int? = nil) {
+        
+        if let index = index {
+            userData?.classNotes[code]?.notes[index] = note
+        } else {
+            userData?.classNotes[code]?.notes.append(note)
+        }
+        print("NOVA NOTA ADICIONADA \(note.title)")
+        Database.shared.saveData(from: userData!)
+    }
+    
+    func addTask(code: String, task: Task) {
+        userData?.classNotes[code]?.tasks.append(task)
+        Database.shared.saveData(from: userData!)
+    }
+    
+    func deleteNote(code: String, at index: Int) {
+        userData?.classNotes[code]?.notes.remove(at: index)
+        Database.shared.saveData(from: userData!)
+    }
+    
+    func deleteTask(code: String, at index: Int) {
+        userData?.classNotes[code]?.tasks.remove(at: index)
+        Database.shared.saveData(from: userData!)
     }
     
     func setupConstraints() {
@@ -162,4 +194,11 @@ class CoursesListController: UIViewController {
             coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
+}
+
+protocol ClassNotesDelegate: class {
+    func addNote(code: String, note: Note, at index: Int?)
+    func addTask(code: String, task: Task)
+    func deleteNote(code: String, at index: Int)
+    func deleteTask(code: String, at index: Int)
 }

@@ -57,6 +57,7 @@ extension CoursesListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let classNoteVC = ClassNotesController()
+        classNoteVC.delegate = self
         if let course = userData?.sigaaUserInfo.cadeiras[indexPath.section] {
             classNoteVC.userNotes = initializeClassNotes(course: course)
         } else {

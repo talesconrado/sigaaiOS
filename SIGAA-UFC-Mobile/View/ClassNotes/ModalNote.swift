@@ -13,9 +13,9 @@ class ModalNote: UIView {
     let title: UITextField = {
         let title = UITextField()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.textAlignment = .center
+        title.textAlignment = .left
         title.placeholder = "Título"
-        title.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        title.font = UIFont.systemFont(ofSize: 27, weight: .semibold)
         title.textColor = .titlesBlue
         
         return title
@@ -29,7 +29,6 @@ class ModalNote: UIView {
         text.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         text.layer.borderWidth = 0.2
         text.layer.borderColor = UIColor.lightGray.cgColor
-        text.layer.cornerRadius = 12
         
         return text
     }()
@@ -62,6 +61,11 @@ class ModalNote: UIView {
             text.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor)
         
         ])
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.endEditing(true)
     }
     
 }

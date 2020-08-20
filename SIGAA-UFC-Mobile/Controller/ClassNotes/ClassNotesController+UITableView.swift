@@ -72,4 +72,23 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
             return 45
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let note = userNotes?.notes[indexPath.row]
+            let title = note?.title ?? ""
+            let text = note?.text ?? ""
+            showNoteModal(title: title, text: text, index: indexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if segmentedControl.selectedSegmentIndex == 0 {
+                userNotes?.notes.remove(at: indexPath.row)
+            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            delegate?.deleteNote(code: userNotes!.code, at: indexPath.row)
+        }
+    }
 }
