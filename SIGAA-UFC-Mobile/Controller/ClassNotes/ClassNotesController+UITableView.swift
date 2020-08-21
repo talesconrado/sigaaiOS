@@ -28,7 +28,7 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
             return userNotes.notes.count
         } else {
             
-            if userNotes.tasks.isEmpty {
+            if userNotes.tasks[0].isEmpty && userNotes.tasks[1].isEmpty {
                 tableView.setEmptyState()
             } else {
                 tableView.restoreState()
@@ -53,7 +53,7 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titles = ["Pendentes", "Feitas"]
-        if segmentedControl.selectedSegmentIndex == 1 {
+        if segmentedControl.selectedSegmentIndex == 1, (!userNotes!.tasks[0].isEmpty || !userNotes!.tasks[1].isEmpty) {
             return titles[section]
         }
         return nil
@@ -78,9 +78,9 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
     
     func setupTaskCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: taskCellId) ?? UITableViewCell(style: .value1, reuseIdentifier: taskCellId)
-        cell.textLabel?.text = tasksArray[indexPath.section][indexPath.row].title
+        cell.textLabel?.text = userNotes!.tasks[indexPath.section][indexPath.row].title
         cell.accessoryType = .disclosureIndicator
-        cell.detailTextLabel?.text = tasksArray[indexPath.section][indexPath.row].deadline
+        cell.detailTextLabel?.text = userNotes!.tasks[indexPath.section][indexPath.row].deadline
         return cell
     }
     

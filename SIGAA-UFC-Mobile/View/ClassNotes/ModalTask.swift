@@ -32,6 +32,7 @@ class ModalTask: UIView {
     let date: UITextField = {
         let date = UITextField()
         date.translatesAutoresizingMaskIntoConstraints = false
+        date.tintColor = .clear
         
         let picker = UIDatePicker()
         picker.datePickerMode = .date
