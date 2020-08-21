@@ -53,10 +53,7 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titles = ["Pendentes", "Feitas"]
-        guard let userNotes = userNotes else {
-            return nil
-        }
-        if segmentedControl.selectedSegmentIndex == 1, !userNotes.tasks.isEmpty {
+        if segmentedControl.selectedSegmentIndex == 1 {
             return titles[section]
         }
         return nil

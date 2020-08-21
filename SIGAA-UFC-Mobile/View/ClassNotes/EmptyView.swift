@@ -45,7 +45,7 @@ class EmptyView: UIView {
         NSLayoutConstraint.activate([
         
             image.heightAnchor.constraint(equalToConstant: 200),
-            image.centerXAnchor.constraint(equalTo: centerXAnchor),
+            image.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -10),
             image.topAnchor.constraint(equalTo: topAnchor, constant: 100),
             
             text.centerXAnchor.constraint(equalTo: centerXAnchor),
