@@ -43,6 +43,7 @@
 		E99BA40C24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA40B24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift */; };
 		E99BA41724E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */; };
 		E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */; };
+		E9F2D3D824EF384F002A84F1 /* ModalTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F2D3D724EF384F002A84F1 /* ModalTaskController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIGAA_UFC_MobileUITests.swift; sourceTree = "<group>"; };
 		E99BA41824E2C27100FCA85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E9F2D3D724EF384F002A84F1 /* ModalTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		E9068D1C24E575EB00FB3DC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9F2D3D624EF370B002A84F1 /* Task */,
 				E913AB6624EEA7A300C99DCE /* Note */,
 				E93B102024EC702A000BE95B /* ClassNotes */,
 				E982AA6224E9BC6200B74726 /* Courses */,
@@ -314,6 +317,14 @@
 				E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		E9F2D3D624EF370B002A84F1 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				E9F2D3D724EF384F002A84F1 /* ModalTaskController.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +492,7 @@
 				E9068D2824E57D2400FB3DC8 /* SigaaUserInfo.swift in Sources */,
 				E957786624EDDCBB00671894 /* ModalTask.swift in Sources */,
 				E957786224ED53FD00671894 /* ClassNotesController+UITableView.swift in Sources */,
+				E9F2D3D824EF384F002A84F1 /* ModalTaskController.swift in Sources */,
 				E94F4AFF24E8ED7400B408EF /* LoginButton.swift in Sources */,
 				E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */,
 				E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */,

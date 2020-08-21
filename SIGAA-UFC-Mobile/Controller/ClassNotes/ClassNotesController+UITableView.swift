@@ -61,7 +61,7 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: taskCellId) ?? UITableViewCell(style: .value1, reuseIdentifier: taskCellId)
         cell.textLabel?.text = tasksArray[indexPath.section][indexPath.row].title
         cell.accessoryType = .disclosureIndicator
-        cell.detailTextLabel?.text = tasksArray[indexPath.section][indexPath.row].deadline.description
+        cell.detailTextLabel?.text = tasksArray[indexPath.section][indexPath.row].deadline
         return cell
     }
     

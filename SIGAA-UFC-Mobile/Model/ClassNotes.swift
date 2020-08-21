@@ -10,7 +10,7 @@ import Foundation
 
 struct Task: Codable {
     var title: String
-    var deadline: Date
+    var deadline: String
     var isTaskDone: Bool
 }
 

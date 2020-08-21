@@ -102,7 +102,7 @@ class ClassNotesController: UIViewController {
             self.showNoteModal()
         }
         let newTask = UIAlertAction(title: "Nova Tarefa", style: .default) { (_) in
-            print("nova tarefa")
+            self.showTaskModal()
         }
         let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         actionSheet.addAction(newNote)
@@ -122,6 +122,22 @@ class ClassNotesController: UIViewController {
         modalNoteVC.index = index
         let navigation = UINavigationController(rootViewController: modalNoteVC)
         navigation.modalPresentationStyle = .formSheet
+        present(navigation, animated: true, completion: nil)
+    }
+    
+    func showTaskModal(title: String = "", date: String? = nil, status: Bool = false) {
+        let modalTaskVC = ModalTaskController()
+        modalTaskVC.delegate = delegate
+        modalTaskVC.code = userNotes?.code
+        modalTaskVC.presenter = self
+        modalTaskVC.contentView.taskTitle.text = title
+
+        if let date = date {
+            modalTaskVC.contentView.date.text = date
+        }
+        
+        modalTaskVC.contentView.taskStatusSwitch.isOn = status
+        let navigation = UINavigationController(rootViewController: modalTaskVC)
         present(navigation, animated: true, completion: nil)
     }
     
