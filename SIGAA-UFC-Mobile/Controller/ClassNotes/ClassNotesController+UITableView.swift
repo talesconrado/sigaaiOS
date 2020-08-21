@@ -17,9 +17,9 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
         } else {
             switch section {
             case 0:
-                return tasksArray[0].count
+                return userNotes?.tasks[0].count ?? 0
             default:
-                return tasksArray[1].count
+                return userNotes?.tasks[1].count ?? 0
             }
         }
     }
@@ -79,6 +79,12 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
             let title = note?.title ?? ""
             let text = note?.text ?? ""
             showNoteModal(title: title, text: text, index: indexPath.row)
+        } else {
+            let task = tasksArray[indexPath.section][indexPath.row]
+            let title = task.title
+            let date = task.deadline
+            let status = task.isTaskDone
+            showTaskModal(title: title, date: date, status: status, index: indexPath.row, array: indexPath.section)
         }
     }
     
@@ -86,9 +92,12 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             if segmentedControl.selectedSegmentIndex == 0 {
                 userNotes?.notes.remove(at: indexPath.row)
+                delegate?.deleteNote(code: userNotes!.code, at: indexPath.row)
+            } else {
+                userNotes?.tasks[indexPath.section].remove(at: indexPath.row)
+                delegate?.deleteTask(code: userNotes!.code, at: indexPath.row, array: indexPath.section)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
-            delegate?.deleteNote(code: userNotes!.code, at: indexPath.row)
         }
     }
 }

@@ -140,7 +140,7 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
             return classNotes
         } else {
             print("Entrou aqui, classNotes era NIL.")
-            let newClassNote = ClassNotes(courseTitle: course.componente, code: course.codigo, tasks: [], notes: [])
+            let newClassNote = ClassNotes(courseTitle: course.componente, code: course.codigo, tasks: [[],[]], notes: [])
             userData?.classNotes[course.codigo] = newClassNote
             return newClassNote
         }
@@ -157,8 +157,12 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
         Database.shared.saveData(from: userData!)
     }
     
-    func addTask(code: String, task: Task) {
-        userData?.classNotes[code]?.tasks.append(task)
+    func addTask(code: String, task: Task, at index: Int?, array: Int) {
+        if let index = index {
+            userData?.classNotes[code]?.tasks[array][index] = task
+        } else {
+            userData?.classNotes[code]?.tasks[array].append(task)
+        }
         Database.shared.saveData(from: userData!)
     }
     
@@ -167,8 +171,8 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
         Database.shared.saveData(from: userData!)
     }
     
-    func deleteTask(code: String, at index: Int) {
-        userData?.classNotes[code]?.tasks.remove(at: index)
+    func deleteTask(code: String, at index: Int, array: Int) {
+        userData?.classNotes[code]?.tasks[array].remove(at: index)
         Database.shared.saveData(from: userData!)
     }
     
@@ -198,7 +202,7 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
 
 protocol ClassNotesDelegate: class {
     func addNote(code: String, note: Note, at index: Int?)
-    func addTask(code: String, task: Task)
+    func addTask(code: String, task: Task, at index: Int?, array: Int)
     func deleteNote(code: String, at index: Int)
-    func deleteTask(code: String, at index: Int)
+    func deleteTask(code: String, at index: Int, array: Int)
 }

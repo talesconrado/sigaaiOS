@@ -70,7 +70,12 @@ class ClassNotesController: UIViewController {
     }
     
     func updateTasksArray() {
-        guard let tasks = userNotes?.tasks else {
+        
+        tasksArray = [[],[]]
+        let data = Database.shared.loadData()
+        userNotes = data?.classNotes[userNotes!.code]
+        
+        guard let tasks = userNotes?.tasks.reduce([], +) else {
             return
         }
         
@@ -81,6 +86,8 @@ class ClassNotesController: UIViewController {
                 tasksArray[0].append(task)
             }
         }
+        
+        userNotes?.tasks = tasksArray
         
     }
     
@@ -102,7 +109,7 @@ class ClassNotesController: UIViewController {
             self.showNoteModal()
         }
         let newTask = UIAlertAction(title: "Nova Tarefa", style: .default) { (_) in
-            self.showTaskModal()
+            self.showTaskModal(index: nil, array: 0)
         }
         let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         actionSheet.addAction(newNote)
@@ -125,12 +132,13 @@ class ClassNotesController: UIViewController {
         present(navigation, animated: true, completion: nil)
     }
     
-    func showTaskModal(title: String = "", date: String? = nil, status: Bool = false) {
+    func showTaskModal(title: String = "", date: String? = nil, status: Bool = false, index: Int?, array: Int) {
         let modalTaskVC = ModalTaskController()
         modalTaskVC.delegate = delegate
         modalTaskVC.code = userNotes?.code
         modalTaskVC.presenter = self
         modalTaskVC.contentView.taskTitle.text = title
+        modalTaskVC.index = index
 
         if let date = date {
             modalTaskVC.contentView.date.text = date

@@ -11,8 +11,9 @@ import UIKit
 class ModalTaskController: UIViewController {
     
     var presenter: ClassNotesController?
-    var delegate: ClassNotesDelegate?
+    weak var delegate: ClassNotesDelegate?
     var code: String?
+    var index: Int?
 
     lazy var contentView: ModalTask = {
         let view = ModalTask()
@@ -45,9 +46,10 @@ class ModalTaskController: UIViewController {
         let title = contentView.taskTitle.text
         let date = contentView.date.text
         let status = contentView.taskStatusSwitch.isOn
+        let array = status == false ? 0 : 1
         let task = Task(title: title!, deadline: date!, isTaskDone: status)
-        delegate?.addTask(code: code!, task: task)
-        presenter!.updateUserNotes()
+        delegate?.addTask(code: code!, task: task, at: index, array: array)
+        presenter!.updateTasksArray()
         presenter!.notesTableView.reloadData()
         self.dismiss(animated: true, completion: nil)
     }
