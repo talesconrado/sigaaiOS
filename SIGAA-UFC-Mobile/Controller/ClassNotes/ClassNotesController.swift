@@ -57,7 +57,6 @@ class ClassNotesController: UIViewController {
         setupTableView()
         setupViews()
         setupConstraints()
-        updateTasksArray()
     }
     
     @objc func didSegmentChange() {

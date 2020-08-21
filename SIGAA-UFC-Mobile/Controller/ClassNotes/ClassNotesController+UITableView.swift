@@ -12,14 +12,33 @@ import UIKit
 extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let userNotes = userNotes else {
+            tableView.setEmptyState()
+            return 0
+        }
+        
         if segmentedControl.selectedSegmentIndex == 0 {
-            return userNotes?.notes.count ?? 0
+            if userNotes.notes.isEmpty {
+                tableView.setEmptyState()
+            } else {
+                tableView.restoreState()
+            }
+            
+            return userNotes.notes.count
         } else {
+            
+            if userNotes.tasks.isEmpty {
+                tableView.setEmptyState()
+            } else {
+                tableView.restoreState()
+            }
+            
             switch section {
             case 0:
-                return userNotes?.tasks[0].count ?? 0
+                return userNotes.tasks[0].count
             default:
-                return userNotes?.tasks[1].count ?? 0
+                return userNotes.tasks[1].count
             }
         }
     }
@@ -34,7 +53,10 @@ extension ClassNotesController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titles = ["Pendentes", "Feitas"]
-        if segmentedControl.selectedSegmentIndex == 1 {
+        guard let userNotes = userNotes else {
+            return nil
+        }
+        if segmentedControl.selectedSegmentIndex == 1, !userNotes.tasks.isEmpty {
             return titles[section]
         }
         return nil
