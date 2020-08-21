@@ -27,6 +27,7 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
         tbv.backgroundColor = .backgroundBlue
         tbv.separatorStyle = .none
         tbv.refreshControl = nil
+        tbv.accessibilityIdentifier = "coursesList"
     
         return tbv
     }()

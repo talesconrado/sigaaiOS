@@ -113,8 +113,7 @@ class ClassNotesController: UIViewController {
         let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         actionSheet.addAction(newNote)
         actionSheet.addAction(newTask)
-        actionSheet.addAction(cancel)
-        
+        actionSheet.addAction(cancel)        
         present(actionSheet, animated: true)
     }
     

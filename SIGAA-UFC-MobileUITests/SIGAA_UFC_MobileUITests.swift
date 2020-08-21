@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import SIGAA_UFC_Mobile
 
 class SIGAA_UFC_MobileUITests: XCTestCase {
 
@@ -21,13 +22,86 @@ class SIGAA_UFC_MobileUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func test_Login_Procedure() {
         let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-noAnimations"]
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        login()
+
+        let coursesList = app.tables.matching(identifier: "coursesList")
+        XCTAssert(coursesList.count == 1)
+
+    }
+    
+    func test_tap_course() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-noAnimations"]
+        app.launch()
+
+        login()
+        
+        let coursesList = app.tables.matching(identifier: "coursesList")
+        coursesList.cells.element(boundBy: 0).tap()
+        
+        let segmented = app.segmentedControls.element(boundBy: 0)
+        XCTAssert(segmented.exists)
+    }
+    
+    func test_taskModal() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-noAnimations"]
+        app.launch()
+
+        login()
+        
+        let coursesList = app.tables.matching(identifier: "coursesList")
+        coursesList.cells.element(boundBy: 0).tap()
+        
+        app.navigationBars.buttons.element(boundBy: 1).tap()
+        
+        app.sheets.buttons["Nova Tarefa"].tap()
+        sleep(1)
+        
+        XCTAssert(app.textFields.element(boundBy: 0).exists)
+    }
+    
+    func test_NoteModal() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-noAnimations"]
+        app.launch()
+
+        login()
+        
+        let coursesList = app.tables.matching(identifier: "coursesList")
+        coursesList.cells.element(boundBy: 0).tap()
+        
+        app.navigationBars.buttons.element(boundBy: 1).tap()
+        
+        app.sheets.buttons["Nova Anotação"].tap()
+        sleep(1)
+        
+        XCTAssert(app.textFields.element(boundBy: 0).exists)
+    }
+    
+    func login() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-noAnimations"]
+        app.launchArguments += ["-isUserLoggedIn", "0"]
+        app.launch()
+
+        let login = app.textFields.element(boundBy: 0)
+        let password = app.secureTextFields.element(boundBy: 0)
+        login.tap()
+        login.typeText(ProcessInfo.processInfo.environment["user"]!)
+        login.swipeDown()
+        
+        password.tap()
+        password.typeText(ProcessInfo.processInfo.environment["sigaa"]!)
+        login.tap()
+        
+        app.buttons["Entrar"].tap()
+        sleep(4)
     }
 
     func testLaunchPerformance() throws {

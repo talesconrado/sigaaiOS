@@ -26,6 +26,7 @@ class LoginCardView: UIView {
         txt.returnKeyType = .done
         txt.autocapitalizationType = .none
         txt.clearButtonMode = .whileEditing
+        txt.accessibilityIdentifier = "login"
         
         let icon = UIImageView(image: UIImage(systemName: "person", withConfiguration: self.iconConfig))
         icon.contentMode = .scaleAspectFit
@@ -48,6 +49,7 @@ class LoginCardView: UIView {
         pwd.returnKeyType = .done
         pwd.autocapitalizationType = .none
         pwd.clearButtonMode = .whileEditing
+        pwd.accessibilityIdentifier = "password"
         
         let icon = UIImageView(image: UIImage(systemName: "lock", withConfiguration: self.iconConfig))
         icon.contentMode = .scaleAspectFit
