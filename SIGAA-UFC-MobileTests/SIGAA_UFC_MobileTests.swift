@@ -14,7 +14,6 @@ class SIGAA_UFC_MobileTests: XCTestCase {
     var scene: SceneDelegate?
 
     override func setUp() {
-
     }
 
     override func tearDown() {

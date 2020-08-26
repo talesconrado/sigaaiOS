@@ -156,8 +156,6 @@
 		E9068D1B24E575E700FB3DC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E9068D1E24E5769600FB3DC8 /* Repository */,
-				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */,
 				E9068D2524E57C8E00FB3DC8 /* Course.swift */,
 				E902422E24EB3DB800A6D142 /* ClassNotes.swift */,
@@ -297,6 +295,8 @@
 				E9068D1A24E575E200FB3DC8 /* View */,
 				E9068D1C24E575EB00FB3DC8 /* Controller */,
 				E9068D1B24E575E700FB3DC8 /* Model */,
+				E9068D1E24E5769600FB3DC8 /* Repository */,
+				E9068D1D24E5767F00FB3DC8 /* Services */,
 				E99BA40224E2C27100FCA85E /* Info.plist */,
 			);
 			path = "SIGAA-UFC-Mobile";
