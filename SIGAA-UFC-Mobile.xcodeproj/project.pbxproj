@@ -43,7 +43,9 @@
 		E99BA40124E2C27100FCA85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99BA3FF24E2C27100FCA85E /* LaunchScreen.storyboard */; };
 		E99BA40C24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA40B24E2C27100FCA85E /* SIGAA_UFC_MobileTests.swift */; };
 		E99BA41724E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */; };
-		E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */; };
+		E9CDC7C424F691F4000CC0E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDC7C324F691F4000CC0E9 /* LoginView.swift */; };
+		E9CDC7C624F6981F000CC0E9 /* LoginView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDC7C524F6981F000CC0E9 /* LoginView+TextFieldDelegate.swift */; };
+		E9CDC7C824F698A2000CC0E9 /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDC7C724F698A2000CC0E9 /* AlertsView.swift */; };
 		E9F2D3D824EF384F002A84F1 /* ModalTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F2D3D724EF384F002A84F1 /* ModalTaskController.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +109,9 @@
 		E99BA41224E2C27100FCA85E /* SIGAA-UFC-MobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SIGAA-UFC-MobileUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99BA41624E2C27100FCA85E /* SIGAA_UFC_MobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIGAA_UFC_MobileUITests.swift; sourceTree = "<group>"; };
 		E99BA41824E2C27100FCA85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E9CDC7C324F691F4000CC0E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E9CDC7C524F6981F000CC0E9 /* LoginView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E9CDC7C724F698A2000CC0E9 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		E9F2D3D724EF384F002A84F1 /* ModalTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +214,9 @@
 				E924FD0124E5E76A00127A3B /* LoginTitleView.swift */,
 				E924FD0424E6251500127A3B /* LoginCardView.swift */,
 				E94F4AFE24E8ED7400B408EF /* LoginButton.swift */,
+				E9CDC7C324F691F4000CC0E9 /* LoginView.swift */,
+				E9CDC7C524F6981F000CC0E9 /* LoginView+TextFieldDelegate.swift */,
+				E9CDC7C724F698A2000CC0E9 /* AlertsView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -317,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				E924FCFF24E5E6FD00127A3B /* LoginController.swift */,
-				E9E019DB24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -486,9 +492,11 @@
 				E9068D2624E57C8E00FB3DC8 /* Course.swift in Sources */,
 				E95BE87C24E6DCBB000E0697 /* Fonts.swift in Sources */,
 				E902423124EB3F4200A6D142 /* UserData.swift in Sources */,
+				E9CDC7C824F698A2000CC0E9 /* AlertsView.swift in Sources */,
 				E9068D2A24E57EDB00FB3DC8 /* SigaaService.swift in Sources */,
 				E982AA5F24E9AD9800B74726 /* CourseCard.swift in Sources */,
 				E95BE87824E6D10E000E0697 /* Colors.swift in Sources */,
+				E9CDC7C424F691F4000CC0E9 /* LoginView.swift in Sources */,
 				E93B101F24EC7026000BE95B /* ClassNotesController.swift in Sources */,
 				E995EEA324E6C8D800CDEE2C /* LoginTextFields.swift in Sources */,
 				E9068D2224E5797800FB3DC8 /* SigaaAPI.swift in Sources */,
@@ -505,10 +513,10 @@
 				E902422924EAC56700A6D142 /* ImageLoader.swift in Sources */,
 				E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */,
 				E94F4B0124E8F19000B408EF /* CoursesListController.swift in Sources */,
+				E9CDC7C624F6981F000CC0E9 /* LoginView+TextFieldDelegate.swift in Sources */,
 				E90BD5E324F0080A007F841D /* EmptyView.swift in Sources */,
 				E982AA6124E9ADCB00B74726 /* UserCard.swift in Sources */,
 				E902422F24EB3DB800A6D142 /* ClassNotes.swift in Sources */,
-				E9E019DC24E8E8AF00CAE203 /* LoginController+UITextFieldDelegate.swift in Sources */,
 				E902422B24EAC66D00A6D142 /* UserPicture.swift in Sources */,
 				E957786824EDE99400671894 /* ModalNoteController.swift in Sources */,
 				E982AA6424E9BC7F00B74726 /* CoursesController+UITableView.swift in Sources */,

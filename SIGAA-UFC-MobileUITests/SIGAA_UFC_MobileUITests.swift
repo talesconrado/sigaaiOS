@@ -58,7 +58,9 @@ class SIGAA_UFC_MobileUITests: XCTestCase {
         let coursesList = app.tables.matching(identifier: "coursesList")
         coursesList.cells.element(boundBy: 0).tap()
         
-        app.navigationBars.buttons.element(boundBy: 1).tap()
+        let modal = app.navigationBars.buttons.element(boundBy: 1)
+        _ = modal.waitForExistence(timeout: 1)
+        modal.tap()
         
         app.sheets.buttons["Nova Tarefa"].tap()
         sleep(1)
