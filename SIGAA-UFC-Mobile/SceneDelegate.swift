@@ -21,11 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
         let login = LoginController()
-        let courses = CoursesListController()
-        
         let navigation = UINavigationController(rootViewController: login)
         
         if isUserLoggedIn {
+            let courses = CoursesListController()
             navigation.pushViewController(courses, animated: false)
         }
         

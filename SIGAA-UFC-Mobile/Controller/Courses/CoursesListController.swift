@@ -14,45 +14,12 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
     var sigaaUserInfo: SigaaUserInfo?
     var cellId = "cellId"
     
-    lazy var userCard: UserCard = {
-        let user = UserCard(user: self.userData!.sigaaUserInfo)
-        user.translatesAutoresizingMaskIntoConstraints = false
+    lazy var contentView: CoursesView = {
+        let content = CoursesView(sigaaUserInfo: self.sigaaUserInfo)
         
-        return user
+        return content
     }()
     
-    let coursesTableView: UITableView = {
-        let tbv = UITableView()
-        tbv.translatesAutoresizingMaskIntoConstraints = false
-        tbv.backgroundColor = .backgroundBlue
-        tbv.separatorStyle = .none
-        tbv.refreshControl = nil
-        tbv.accessibilityIdentifier = "coursesList"
-    
-        return tbv
-    }()
-    
-    lazy var bottomLineView: UIView = {
-        let line = UIView()
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = .backgroundBlue
-        line.layer.shadowColor = UIColor.darkGray.cgColor
-        line.layer.shadowRadius = 3
-        line.layer.shadowOpacity = 0.9
-        line.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        
-        return line
-    }()
-    
-    lazy var semesterLabel: UILabel = {
-        let semester = UILabel()
-        semester.translatesAutoresizingMaskIntoConstraints = false
-        semester.text = self.userData?.sigaaUserInfo.semestre
-        semester.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        
-        return semester
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -62,7 +29,11 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
         setupNavigationBar()
         setupBarButton()
         setupTableView()
-        setupConstraints()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        self.view = contentView
     }
     
     func loadData() {
@@ -80,25 +51,21 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
     }
     
     func setupUserCard() {
-        view.addSubview(userCard)
-        view.addSubview(semesterLabel)
-        view.addSubview(bottomLineView)
         let imageLoader = ImageLoader()
         
         if let strUrl = userData!.sigaaUserInfo.foto.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
             let imgUrl = URL(string: strUrl) {
-            imageLoader.loadImageWithUrl(imgUrl) { (foto) in
-                self.userCard.userPicture.loaded()
-                self.userCard.userPicture.image = foto
+            imageLoader.loadImageWithUrl(imgUrl) { (picture) in
+                self.contentView.userCard.userPicture.loaded()
+                self.contentView.userCard.userPicture.image = picture
             }
         }
     }
     
     func setupTableView() {
-        view.insertSubview(coursesTableView, belowSubview: userCard)
-        coursesTableView.register(CourseCard.self, forCellReuseIdentifier: cellId)
-        coursesTableView.delegate = self
-        coursesTableView.dataSource = self
+        contentView.coursesTableView.register(CourseCard.self, forCellReuseIdentifier: cellId)
+        contentView.coursesTableView.delegate = self
+        contentView.coursesTableView.dataSource = self
     }
     
     func setupNavigationBar() {
@@ -176,29 +143,7 @@ class CoursesListController: UIViewController, ClassNotesDelegate {
         userData?.classNotes[code]?.tasks[array].remove(at: index)
         Database.shared.saveData(from: userData!)
     }
-    
-    func setupConstraints() {
-        NSLayoutConstraint.activate([
-            
-            userCard.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
-            userCard.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 30),
-            userCard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
-            userCard.heightAnchor.constraint(equalToConstant: 100),
-            
-            semesterLabel.topAnchor.constraint(equalTo: userCard.bottomAnchor),
-            semesterLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            
-            bottomLineView.heightAnchor.constraint(equalToConstant: 2),
-            bottomLineView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            bottomLineView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            bottomLineView.topAnchor.constraint(equalTo: semesterLabel.bottomAnchor, constant: 12),
-            
-            coursesTableView.topAnchor.constraint(equalTo: bottomLineView.bottomAnchor),
-            coursesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            coursesTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            coursesTableView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
-    }
+
 }
 
 protocol ClassNotesDelegate: class {

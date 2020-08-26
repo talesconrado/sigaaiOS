@@ -10,12 +10,7 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    let coursesController = CoursesListController()
-    
-    let contentView: LoginView = {
-        let content = LoginView()
-        return content
-    }()
+    let contentView = LoginView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +59,9 @@ class LoginController: UIViewController {
     
     func showCoursesScreen(from sigaaUserInfo: SigaaUserInfo? = nil) {
         contentView.loginCard.loginButton.loginSuccesful()
+        let coursesController = CoursesListController()
         coursesController.sigaaUserInfo = sigaaUserInfo
-        self.navigationController?.pushViewController(self.coursesController, animated: true)
+        self.navigationController?.pushViewController(coursesController, animated: true)
     }
     
     func alertUserError() {

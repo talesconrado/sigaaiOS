@@ -11,19 +11,21 @@ import XCTest
 
 class SIGAA_UFC_MobileUITests: XCTestCase {
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        super.setUp()
+        login()
         continueAfterFailure = false
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
+        UserDefaults.standard.set(1, forKey: "isUserLoggedIn")
     }
-
+    
     func test_Login_Procedure() {
         let app = XCUIApplication()
         app.launchArguments = ["-reset", "-noAnimations"]
         app.launch()
-
-        login()
 
         let coursesList = app.tables.matching(identifier: "coursesList")
         XCTAssert(coursesList.count == 1)
@@ -34,8 +36,6 @@ class SIGAA_UFC_MobileUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-reset", "-noAnimations"]
         app.launch()
-
-        login()
         
         let coursesList = app.tables.matching(identifier: "coursesList")
         coursesList.cells.element(boundBy: 0).tap()
@@ -48,8 +48,6 @@ class SIGAA_UFC_MobileUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-reset", "-noAnimations"]
         app.launch()
-
-        login()
         
         let coursesList = app.tables.matching(identifier: "coursesList")
         coursesList.cells.element(boundBy: 0).tap()
@@ -68,8 +66,6 @@ class SIGAA_UFC_MobileUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["-reset", "-noAnimations"]
         app.launch()
-
-        login()
         
         let coursesList = app.tables.matching(identifier: "coursesList")
         coursesList.cells.element(boundBy: 0).tap()

@@ -19,6 +19,7 @@
 		E9068D2824E57D2400FB3DC8 /* SigaaUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */; };
 		E9068D2A24E57EDB00FB3DC8 /* SigaaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9068D2924E57EDB00FB3DC8 /* SigaaService.swift */; };
 		E90BD5E324F0080A007F841D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BD5E224F0080A007F841D /* EmptyView.swift */; };
+		E90CC94C24F6F2AF00C15A3F /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CC94B24F6F2AF00C15A3F /* CoursesView.swift */; };
 		E913AB6824EEA7CE00C99DCE /* ModalNoteController+TextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913AB6724EEA7CE00C99DCE /* ModalNoteController+TextDelegate.swift */; };
 		E924FD0024E5E6FD00127A3B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924FCFF24E5E6FD00127A3B /* LoginController.swift */; };
 		E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924FD0124E5E76A00127A3B /* LoginTitleView.swift */; };
@@ -79,6 +80,7 @@
 		E9068D2724E57D2400FB3DC8 /* SigaaUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaUserInfo.swift; sourceTree = "<group>"; };
 		E9068D2924E57EDB00FB3DC8 /* SigaaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigaaService.swift; sourceTree = "<group>"; };
 		E90BD5E224F0080A007F841D /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		E90CC94B24F6F2AF00C15A3F /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
 		E913AB6724EEA7CE00C99DCE /* ModalNoteController+TextDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModalNoteController+TextDelegate.swift"; sourceTree = "<group>"; };
 		E924FCFF24E5E6FD00127A3B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E924FD0124E5E76A00127A3B /* LoginTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTitleView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				E982AA5E24E9AD9800B74726 /* CourseCard.swift */,
 				E982AA6024E9ADCB00B74726 /* UserCard.swift */,
 				E902422A24EAC66D00A6D142 /* UserPicture.swift */,
+				E90CC94B24F6F2AF00C15A3F /* CoursesView.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				E9F2D3D824EF384F002A84F1 /* ModalTaskController.swift in Sources */,
 				E94F4AFF24E8ED7400B408EF /* LoginButton.swift in Sources */,
 				E9068D2424E57A4900FB3DC8 /* HTTP.swift in Sources */,
+				E90CC94C24F6F2AF00C15A3F /* CoursesView.swift in Sources */,
 				E99BA3F524E2C27000FCA85E /* AppDelegate.swift in Sources */,
 				E924FD0524E6251500127A3B /* LoginCardView.swift in Sources */,
 				E924FD0224E5E76A00127A3B /* LoginTitleView.swift in Sources */,
