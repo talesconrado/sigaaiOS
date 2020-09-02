@@ -12,3 +12,6 @@ A basic mobile version of SIGAA UFC with some extra functionalities. Written usi
 - [ ] Get news from each virtual class
 - [ ] Get absence
 - [ ] Get tests results
+
+## How to
+API utilizada: [ Sigaa Api ](https://github.com/gabrielfvale/sigaapi)
