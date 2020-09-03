@@ -14,5 +14,5 @@ A basic mobile version of SIGAA UFC with some extra functionalities. Written usi
 - [ ] Get tests results
 
 ## How to
-To actually get data from SIGAA we need a scrapper, this work is done through this [ API ](https://github.com/gabrielfvale/sigaapi).
+To actually get data from SIGAA we need a scraper, this work is done through this [ API ](https://github.com/gabrielfvale/sigaapi).
 You can download it and run locally, if you want. I choose to run it inside a Docker container.
