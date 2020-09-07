@@ -13,7 +13,7 @@ enum SigaaAPI: Router {
     case login
     
     var hostname: String {
-        return "192.168.0.11"
+        return "127.0.0.1"
     }
     
     var url: URL? {
